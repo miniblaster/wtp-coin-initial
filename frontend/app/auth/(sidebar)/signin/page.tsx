@@ -43,7 +43,7 @@ export default function Signin() {
             Forgot password?
           </Link>
           <Button
-            className={`flex justify-center items-center h-fit w-full py-[11px] bg-disabled/[16%] text-[15px]/[26px] font-bold text-secondary`}
+            className={`flex justify-center items-center h-fit w-full py-[11px] bg-disabled/[20%] text-[15px]/[26px] font-bold text-secondary`}
           >
             Sign In
           </Button>

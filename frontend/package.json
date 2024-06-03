@@ -11,7 +11,14 @@
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.3"
+    "next": "14.2.3",
+    "@ant-design/icons": "^5.3.7",
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "antd": "^5.17.4",
+    "antd-input-otp": "^2.1.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
     "typescript": "^5",

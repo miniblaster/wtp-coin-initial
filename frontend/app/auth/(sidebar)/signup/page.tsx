@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Flex, Typography, Input, Button } from "antd";
-import TwitterLogo from "@/public/img/auth/Twitter.svg";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { Poppins } from "next/font/google";
+
+import TwitterLogo from "@/public/img/auth/Twitter.svg";
+import LinkedInLogo from "@/public/img/auth/LinkedInLogo.svg";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -81,7 +83,7 @@ export default function Signup() {
       </Flex>
       <Flex vertical className={`px-12 gap-y-6`}>
         <Button
-          className={`flex justify-center items-center h-fit w-full py-[11px] bg-mainColor text-[15px]/[26px] text-[white]`}
+          className={`flex justify-center items-center h-fit w-full py-[11px] bg-mainColor text-[15px]/[26px] text-[white] rounded-[14px]`}
         >
           Create Account
         </Button>
@@ -106,10 +108,10 @@ export default function Signup() {
           Try login through Social media
         </Typography>
         <Button
-          className={`flex flex-row items-center rounded-2xl py-4 px-7 h-fit`}
+          className={`flex flex-row items-center rounded-2xl py-4 px-7 h-fit rounded-[360px]`}
         >
-          <Image src={TwitterLogo} alt="TwitterLogo" className="pr-2" />
-          Twitter
+          <Image src={LinkedInLogo} alt="LinkedInLogo" className="pr-2" />
+          LinkedIn
         </Button>
       </Flex>
     </Flex>
