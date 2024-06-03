@@ -1,0 +1,15 @@
+import AuthNavbar from "@/components/authNavbar";
+import { Flex } from "antd";
+
+export default function NoSidebarAuthLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <Flex vertical className={`w-screen h-screen relative`}>
+      <AuthNavbar />
+      <Flex className={`mx-auto my-auto`}>{children}</Flex>
+    </Flex>
+  );
+}
