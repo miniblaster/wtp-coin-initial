@@ -1,15 +1,17 @@
 import { Flex } from "antd";
 import RightSidebar from "@/components/authSidebar";
 
+interface ISidebarAuthLayoutProps {
+  children: React.ReactNode;
+}
+
 export default function SidebarAuthLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<ISidebarAuthLayoutProps>) {
   return (
-    <Flex className={`h-screen`}>
+    <Flex className={`lg:h-screen lg:flex block`}>
       <RightSidebar />
-      <Flex className={`w-1/2`}>{children}</Flex>
+      <Flex className={`lg:w-1/2 lg:flex hidden`}>{children}</Flex>
     </Flex>
   );
 }

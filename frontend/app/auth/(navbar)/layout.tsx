@@ -1,6 +1,10 @@
 import AuthNavbar from "@/components/authNavbar";
 import { Flex } from "antd";
 
+interface INoSidebarAuthLayoutProps {
+  children: React.ReactNode;
+}
+
 export default function NoSidebarAuthLayout({
   children,
 }: Readonly<{
