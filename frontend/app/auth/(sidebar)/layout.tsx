@@ -1,4 +1,4 @@
-import { Flex } from "antd";
+import { ConfigProvider, Flex } from "antd";
 import RightSidebar from "@/components/auth/authSidebar";
 import MobileRightSidebar from "@/components/auth/authSidebar/mobile";
 
@@ -10,14 +10,28 @@ export default function SidebarAuthLayout({
   children,
 }: Readonly<ISidebarAuthLayoutProps>) {
   return (
-    <Flex className={`lg:h-screen lg:flex block`}>
-      <Flex className={`w-1/2 lg:flex hidden`}>
-        <RightSidebar />
+    <ConfigProvider
+      theme={{
+        components: {
+          Input: {
+            paddingBlock: 16,
+            paddingInline: 14,
+          },
+        },
+      }}
+    >
+      <Flex className={`lg:h-screen lg:flex block`}>
+        <Flex className={`w-1/2 lg:flex hidden`}>
+          <RightSidebar />
+        </Flex>
+        <Flex
+          justify="center"
+          className={`w-full block lg:hidden bg-mainColor/[12%]`}
+        >
+          <MobileRightSidebar />
+        </Flex>
+        <Flex className={`lg:w-1/2 w-full`}>{children}</Flex>
       </Flex>
-      {/* <Flex className={`w-full flex lg:hidden`}>
-        <MobileRightSidebar />
-      </Flex> */}
-      <Flex className={`lg:w-1/2 lg:flex hidden`}>{children}</Flex>
-    </Flex>
+    </ConfigProvider>
   );
 }
