@@ -1,7 +1,10 @@
+// "use server";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Flex, Typography, Input, Button } from "antd";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import Password from "antd/es/input/Password";
 import { Poppins } from "next/font/google";
 
 import TwitterLogo from "@/public/img/auth/Twitter.svg";
@@ -23,7 +26,7 @@ export default function Signup() {
           className={`h-[74px] justify-between mb-4`}
           align="center"
         >
-          <Typography className={`font-bold text-[24px]`}>
+          <Typography className={`font-bold text-[24px]/[36px]`}>
             Let&lsquo;s get started
           </Typography>
           <Flex>
@@ -72,12 +75,10 @@ export default function Signup() {
             <Typography className={`text-[16px] font-semibold`}>
               Password
             </Typography>
-            <Input
-              type="email"
-              placeholder="Enter password"
+            <Password
+              placeholder="input password"
               className={`py-4 pl-[14px] flex justify-between`}
-              suffix={<EyeInvisibleOutlined />}
-            ></Input>
+            />
           </Flex>
         </Flex>
       </Flex>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TwitterLogo from "@/public/img/auth/Twitter.svg";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import Password from "antd/es/input/Password";
 
 export default function Signin() {
   return (
@@ -30,11 +31,10 @@ export default function Signin() {
             <Typography className="font-semibold text-[16px]/[24px]">
               Password
             </Typography>
-            <Input
+            <Password
               placeholder="Enter password"
               className={`py-4 pl-[14px]`}
-              suffix={<EyeInvisibleOutlined />}
-            ></Input>
+            />
           </Flex>
           <Link
             href={"#"}

@@ -1,4 +1,4 @@
-import AuthNavbar from "@/components/authNavbar";
+import AuthNavbar from "@/components/auth/authNavbar";
 import { Flex } from "antd";
 
 interface INoSidebarAuthLayoutProps {
