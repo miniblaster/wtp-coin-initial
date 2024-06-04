@@ -4,66 +4,71 @@ import Link from "next/link";
 import TwitterLogo from "@/public/img/auth/Twitter.svg";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import Password from "antd/es/input/Password";
+import Illustration from "@/public/img/AuthSidebarIllustration.svg";
 
 export default function Signin() {
   return (
-    <Flex vertical className={`w-full px-16 py-[238px] gap-y-10`}>
-      <Flex vertical>
-        <Flex vertical align="center" className="w-full pb-10">
-          <Typography className="text-[24px]/[36px] font-bold">
-            Welcome!
-          </Typography>
-          <Typography className="text-[24px]/[36px] font-bold">
-            Sign in to continue
-          </Typography>
-        </Flex>
-        <Flex vertical className="gap-5">
-          <Flex vertical className="gap-2">
-            <Typography className="font-semibold text-[16px]/[24px]">
-              Email
+    <>
+      <Flex vertical className={`w-full bg-mainColor/[0.12] lg:hidden block`}>
+        <Flex vertical align="center" className="w-full py-4 gap-y-4">
+          <Flex vertical align="center" className="gap-y-2 px-4 w-full">
+            <Typography className="font-bold text-[20px]/[30px] text-mainColor">
+              Start Your Success Story
             </Typography>
-            <Input
-              placeholder="Enter email"
-              className={`py-4 pl-[14px]`}
-            ></Input>
+            <Typography className="text-[12px]/[20px] text-center">
+              Your journey towards financial freedom continues. Log in and take
+              advantage of all that{" "}
+              <span className="text-mainColor">WeThePeople</span>&nbsp;has to
+              offer.
+            </Typography>
           </Flex>
-          <Flex vertical className="gap-2">
-            <Typography className="font-semibold text-[16px]/[24px]">
-              Password
-            </Typography>
-            <Password
-              placeholder="Enter password"
-              className={`py-4 pl-[14px]`}
-            />
+          <Image src={Illustration} alt="Illustration" className="px-[69px]" />
+        </Flex>
+      </Flex>
+      <Flex vertical className={`w-full py-3 px-4 gap-y-8`}>
+        <Flex vertical className="gap-y-7">
+          <Typography className="text-[20px]/[30px] font-bold">
+            We&lsquo;ve Been Expecting You!
+          </Typography>
+          <Flex vertical className="gap-y-5">
+            <Flex vertical className="gap-y-2">
+              <Typography className="text-[12px]/[16px] font-semibold">
+                Username or Email
+              </Typography>
+              <Input
+                placeholder="sage.seneca"
+                className="text-[12px]/[16px] px-[14px] py-3"
+              />
+            </Flex>
+            <Flex vertical className="gap-y-2">
+              <Typography className="text-[12px]/[16px] font-semibold">
+                Username or Email
+              </Typography>
+              <Input
+                placeholder="sage.seneca"
+                className="text-[12px]/[16px] px-[14px] py-3"
+              />
+            </Flex>
           </Flex>
           <Link
-            href={"#"}
-            className="font-normal text-[14px]/[22px] flex justify-end"
+            href="#"
+            className="flex justify-center text-[12px]/[20px] font-medium text-[black]"
           >
-            Forgot password?
+            Forgot Password?
           </Link>
-          <Button
-            className={`flex justify-center items-center h-fit w-full py-[11px] bg-disabled/[20%] text-[15px]/[26px] font-bold text-secondary`}
-          >
-            Sign In
+        </Flex>
+        <Flex vertical className="gap-y-6">
+          <Button className="text-[15px]/[26px] font-bold text-[white] py-[11px] bg-mainColor h-fit">
+            Create Account
           </Button>
+          <Flex justify="center" align="center">
+            <Typography>Don&lsquo;t have an account?&nbsp;</Typography>
+            <Link href={"#"} className="text-[12px]/[16px] font-semibold">
+              Sign Up
+            </Link>
+          </Flex>
         </Flex>
       </Flex>
-      <Flex
-        vertical
-        align="center"
-        className={`px-16 h-[94px] justify-between`}
-      >
-        <Typography className={`text-[#637381] text-[14px]/[22px] pb-4`}>
-          Try login through Social media
-        </Typography>
-        <Button
-          className={`flex flex-row items-center rounded-[360px] py-4 px-7 h-fit font-semibold`}
-        >
-          <Image src={TwitterLogo} alt="TwitterLogo" className="pr-2" />
-          Twitter
-        </Button>
-      </Flex>
-    </Flex>
+    </>
   );
 }

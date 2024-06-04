@@ -23,20 +23,6 @@ export default function MobileRightSidebar() {
           </Flex>
         </Flex>
       </Flex>
-      <Flex vertical align="center" className="w-full py-4 gap-y-4">
-        <Flex vertical align="center" className="gap-y-2 px-4 w-full">
-          <Typography className="font-bold text-[20px]/[30px] text-mainColor">
-            Start Your Success Story
-          </Typography>
-          <Typography className="text-[12px]/[20px] text-center">
-            Innovate, Earn, and Grow with Blockchain on{" "}
-            <span className="text-mainColor">WeThePeople</span>. Dive into a
-            world where your freelance work is safeguarded and rewarded like
-            never before. Join us and transform your potential into success.
-          </Typography>
-        </Flex>
-        <Image src={Illustration} alt="Illustration" className="px-[69px]" />
-      </Flex>
     </>
   );
 }

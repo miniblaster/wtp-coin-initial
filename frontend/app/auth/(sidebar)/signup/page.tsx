@@ -1,13 +1,32 @@
 // "use server";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Flex, Typography, Input, Button, Checkbox } from "antd";
 import Password from "antd/es/input/Password";
 import Compact from "antd/es/space/Compact";
 
+import Illustration from "@/public/img/AuthSidebarIllustration.svg";
+
 export default function Signup() {
   return (
     <>
+      <Flex vertical className={`w-full bg-mainColor/[0.12] lg:hidden block`}>
+        <Flex vertical align="center" className="w-full py-4 gap-y-4">
+          <Flex vertical align="center" className="gap-y-2 px-4 w-full">
+            <Typography className="font-bold text-[20px]/[30px] text-mainColor">
+              Start Your Success Story
+            </Typography>
+            <Typography className="text-[12px]/[20px] text-center">
+              Innovate, Earn, and Grow with Blockchain on{" "}
+              <span className="text-mainColor">WeThePeople</span>. Dive into a
+              world where your freelance work is safeguarded and rewarded like
+              never before. Join us and transform your potential into success.
+            </Typography>
+          </Flex>
+          <Image src={Illustration} alt="Illustration" className="px-[69px]" />
+        </Flex>
+      </Flex>
       <Flex
         vertical
         className={`w-full lg:py-[166px] py-3 lg:gap-y-14 gap-y-8`}
