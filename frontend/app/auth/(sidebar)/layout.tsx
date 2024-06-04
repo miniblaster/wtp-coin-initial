@@ -14,9 +14,9 @@ export default function SidebarAuthLayout({
       <Flex className={`w-1/2 lg:flex hidden`}>
         <RightSidebar />
       </Flex>
-      <Flex className={`w-full flex lg:hidden`}>
+      {/* <Flex className={`w-full flex lg:hidden`}>
         <MobileRightSidebar />
-      </Flex>
+      </Flex> */}
       <Flex className={`lg:w-1/2 lg:flex hidden`}>{children}</Flex>
     </Flex>
   );

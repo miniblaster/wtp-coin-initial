@@ -3,34 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Flex, Typography, Input, Button } from "antd";
-import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import Password from "antd/es/input/Password";
-import { Poppins } from "next/font/google";
 
 import TwitterLogo from "@/public/img/auth/Twitter.svg";
 import LinkedInLogo from "@/public/img/auth/LinkedInLogo.svg";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
 export default function Signup() {
   return (
-    <Flex vertical className={`w-full py-[148px] gap-y-14`}>
+    <Flex vertical className={`w-full py-[166px] gap-y-14`}>
       <Flex className={` flex flex-col w-full gap-y-6 px-12`}>
-        <Flex
-          vertical
-          className={`h-[74px] justify-between mb-4`}
-          align="center"
-        >
-          <Typography className={`font-bold text-[24px]/[36px]`}>
+        <Flex vertical className={`gap-y-4`} align="center">
+          <Typography className="font-bold text-[24px]/[36px]">
             Let&lsquo;s get started
           </Typography>
           <Flex>
-            <Typography className={``}>
+            <Typography className="text-[14px]/[22px], font-normal">
               Already have an account?&nbsp;
             </Typography>
             <Link href={"#"} className={`text-mainColor text-[14px]`}>
@@ -38,47 +25,59 @@ export default function Signup() {
             </Link>
           </Flex>
         </Flex>
-        <Flex className={`w-full h-[90px] gap-4`}>
-          <Flex vertical className={` w-1/2 justify-between`}>
-            <Typography className={`text-[16px] font-semibold`}>
-              First Name
-            </Typography>
+        <Flex vertical className="gap-y-6">
+          {/* <Flex className={`w-full h-[90px] gap-4`}> */}
+          <Flex vertical className={`w-full gap-y-3`}>
+            <Flex align="center">
+              <Typography
+                className={`text-[16px] font-semibold`}
+                style={{ fontSize: "16px", fontWeight: 600 }}
+              >
+                How shall we address you?&nbsp;
+              </Typography>
+              <Typography
+                className={`text-[12px]/[12px] font-semibold text-secondary`}
+              >
+                (Optional)
+              </Typography>
+            </Flex>
             <Input
-              placeholder="Your first name"
-              className={`py-4 pl-[14px]`}
+              placeholder="mrseneca"
+              className={`py-4 px-[14px] text-[14px]/[22px]`}
             ></Input>
           </Flex>
-          <Flex vertical className={` w-1/2 justify-between`}>
-            <Typography className={`text-[16px] font-semibold`}>
-              Last Name
+          <Flex vertical className={`w-full gap-y-3`}>
+            <Typography className={`text-[16px]/[24px] font-semibold`}>
+              Claim Your Username!
             </Typography>
             <Input
               placeholder="Your last name"
-              className={`py-4 pl-[14px]`}
+              className={`py-4 px-[14px]`}
             ></Input>
+            {/* </Flex> */}
           </Flex>
-        </Flex>
-        <Flex className={`w-full h-[90px] gap-4`}>
-          <Flex vertical className={`w-full justify-between`}>
-            <Typography className={`text-[16px] font-semibold`}>
-              Email
-            </Typography>
-            <Input
-              type="email"
-              placeholder="Enter email"
-              className={`py-4 pl-[14px]`}
-            ></Input>
+          <Flex className={`w-full h-[90px] gap-y-3`}>
+            <Flex vertical className={`w-full justify-between`}>
+              <Typography className={`text-[16px] font-semibold`}>
+                Email
+              </Typography>
+              <Input
+                type="email"
+                placeholder="mrseneca@domain.com"
+                className={`py-4 px-[14px] text-[14px]/[22px]`}
+              ></Input>
+            </Flex>
           </Flex>
-        </Flex>
-        <Flex className={`w-full h-[90px] gap-4`}>
-          <Flex vertical className={`w-full justify-between`}>
-            <Typography className={`text-[16px] font-semibold`}>
-              Password
-            </Typography>
-            <Password
-              placeholder="input password"
-              className={`py-4 pl-[14px] flex justify-between`}
-            />
+          <Flex className={`w-full h-[90px] gap-y-3`}>
+            <Flex vertical className={`w-full justify-between`}>
+              <Typography className={`text-[16px] font-semibold`}>
+                Password
+              </Typography>
+              <Password
+                placeholder="Enter password"
+                className={`py-4 px-[14px] text-[14px]/[22px]`}
+              />
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
@@ -90,17 +89,17 @@ export default function Signup() {
         </Button>
         <Typography className={`flex justify-center`}>
           By signing up, I agree to&nbsp;
-          <Link href={`#`} className={`text-mainColor`}>
+          <Link href={`#`} className={`underline text-[black]`}>
             Terms of Use
           </Link>{" "}
           &nbsp;and&nbsp;
-          <Link href={`#`} className={`text-mainColor`}>
+          <Link href={`#`} className={`underline text-[black]`}>
             Privacy Policy
           </Link>
           .
         </Typography>
       </Flex>
-      <Flex
+      {/* <Flex
         vertical
         align="center"
         className={`px-16 h-[94px] justify-between`}
@@ -109,12 +108,12 @@ export default function Signup() {
           Try login through Social media
         </Typography>
         <Button
-          className={`flex flex-row items-center rounded-2xl py-4 px-7 h-fit rounded-[360px]`}
+          className={`flex flex-row items-center py-4 px-7 h-fit rounded-[360px]`}
         >
           <Image src={LinkedInLogo} alt="LinkedInLogo" className="pr-2" />
           LinkedIn
         </Button>
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 }
