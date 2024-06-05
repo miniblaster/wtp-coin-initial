@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Flex, Typography, Input, Button, Checkbox } from "antd";
+import {
+  Flex,
+  Typography,
+  Input,
+  Button,
+  Checkbox,
+  ConfigProvider,
+} from "antd";
 import Password from "antd/es/input/Password";
 import Compact from "antd/es/space/Compact";
 
@@ -62,21 +69,53 @@ export default function Signup() {
               </Flex>
               <Input
                 placeholder="mrseneca"
-                className={`text-[14px]/[22px]`}
+                className={`text-[14px]/[22px] px-[14px] py-3 lg:py-4`}
               ></Input>
             </Flex>
             <Flex vertical className={`w-full lg:gap-y-3 gap-y-2`}>
               <Typography className={`text-[16px]/[24px] font-semibold`}>
                 Claim Your Username!
               </Typography>
-              <Compact className="">
-                <Input
-                  type="text"
-                  addonBefore="wetp.com/"
-                  placeholder="seneca.sage"
-                  allowClear
-                />
-              </Compact>
+              <ConfigProvider
+                theme={{
+                  components: {
+                    Input: {
+                      paddingBlock: 16,
+                      paddingInline: 14,
+                    },
+                  },
+                }}
+              >
+                <Compact className="">
+                  <Input
+                    type="text"
+                    addonBefore="wetp.com/"
+                    placeholder="seneca.sage"
+                    allowClear
+                    className="lg:flex hidden"
+                  />
+                </Compact>
+              </ConfigProvider>
+              <ConfigProvider
+                theme={{
+                  components: {
+                    Input: {
+                      paddingBlock: 12,
+                      paddingInline: 14,
+                    },
+                  },
+                }}
+              >
+                <Compact className="">
+                  <Input
+                    type="text"
+                    addonBefore="wetp.com/"
+                    placeholder="seneca.sage"
+                    allowClear
+                    className="flex lg:hidden"
+                  />
+                </Compact>
+              </ConfigProvider>
             </Flex>
             <Flex vertical className={`w-full lg:gap-y-3 gap-y-2`}>
               <Typography className={`text-[16px] font-semibold`}>
@@ -85,7 +124,7 @@ export default function Signup() {
               <Input
                 type="email"
                 placeholder="mrseneca@domain.com"
-                className={`text-[14px]/[22px]`}
+                className={`text-[14px]/[22px] px-[14px] py-3 lg:py-4`}
               ></Input>
             </Flex>
             <Flex vertical className={`w-full lg:gap-y-3 gap-y-2`}>
@@ -94,7 +133,7 @@ export default function Signup() {
               </Typography>
               <Password
                 placeholder="Enter password"
-                className={`text-[14px]/[22px]`}
+                className={`text-[14px]/[22px] px-[14px] py-3 lg:py-4`}
               />
             </Flex>
           </Flex>
