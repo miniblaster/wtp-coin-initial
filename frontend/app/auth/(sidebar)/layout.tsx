@@ -14,7 +14,7 @@ export default function SidebarAuthLayout({
       theme={{
         components: {
           Input: {
-            paddingBlock: 16,
+            paddingBlock: 12,
             paddingInline: 14,
           },
         },

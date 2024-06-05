@@ -11,7 +11,7 @@ export default function NoSidebarAuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Flex vertical className={`w-screen h-screen relative`}>
+    <Flex vertical className={`w-screen lg:h-screen`}>
       <AuthNavbar />
       <Flex className={`mx-auto my-auto`}>{children}</Flex>
     </Flex>
