@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Flex, Typography, Input, Button, ConfigProvider } from "antd";
 
 import SendRequestIllustration from "@/public/img/auth/SendRequestIllustration.svg";
-import AuthReturnArrow from "@/public/img/auth/ic-eva_arrow-ios-back-fill.svg";
 
 export default function SendRequest() {
   return (
@@ -15,11 +14,9 @@ export default function SendRequest() {
             Password Request Sent Successfully!
           </Typography>
         </Flex>
-
         <Flex justify="center" className="w-full px-[107px]">
           <Image alt="SendRequestIllustration" src={SendRequestIllustration} />
         </Flex>
-
         <Flex justify="center" className="w-full px-4">
           <Typography className="text-center text-[14px]/[24px]">
             We&lsquo;ve sent a 6-digit OTP confirmation email to&nbsp;
@@ -27,7 +24,6 @@ export default function SendRequest() {
             Please enter the code in below box to verify your email.
           </Typography>
         </Flex>
-
         <Flex justify="center" className="w-full px-[18px] gap-x-3">
           <ConfigProvider
             theme={{
@@ -43,7 +39,6 @@ export default function SendRequest() {
             <Input.OTP className="" />
           </ConfigProvider>
         </Flex>
-
         <Flex vertical align="center" className="w-full px-4 gap-y-6">
           <Flex vertical className="w-full gap-y-3">
             <Button className="text-[15px]/[26px] font-bold text-[white] py-[11px] h-fit bg-mainColor w-full">

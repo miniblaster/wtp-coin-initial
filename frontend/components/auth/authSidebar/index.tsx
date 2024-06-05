@@ -38,7 +38,7 @@ export default function RightSidebar() {
       <Flex
         justify="center"
         align="center"
-        className={`w-full h-11 relative block lg:hidden bg-mainColor/[12%]`}
+        className={`w-full h-11 relative flex lg:hidden`}
       >
         <Image
           src={AuthLeftArrow}

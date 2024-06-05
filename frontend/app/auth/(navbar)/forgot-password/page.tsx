@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { Flex, Typography, Input, Button } from "antd";
 import EmailVerifiedIllustration from "@/public/img/auth/EmailVerifiedIllustration.svg";
-import AuthReturnArrow from "@/public/img/auth/ic-eva_arrow-ios-back-fill.svg";
-import Link from "next/link";
 
 export default function ForgotPassword() {
   return (

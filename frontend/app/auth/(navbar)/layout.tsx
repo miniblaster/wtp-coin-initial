@@ -13,7 +13,9 @@ export default function NoSidebarAuthLayout({
   return (
     <Flex vertical className={`w-screen lg:h-screen`}>
       <AuthNavbar />
-      <Flex className={`mx-auto my-auto`}>{children}</Flex>
+      <Flex justify="center" className="w-full">
+        {children}
+      </Flex>
     </Flex>
   );
 }
