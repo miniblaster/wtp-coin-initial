@@ -23,6 +23,18 @@ import Banner from "@/public/images/auth/Banner.svg";
 export default function Page() {
   const [loaded, setLoaded] = useState<boolean>(false);
 
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
@@ -98,8 +110,8 @@ export default function Page() {
                       },
                       components: {
                         Input: {
-                          inputFontSize: 12,
-                          paddingBlock: 12,
+                          inputFontSize: isMobile ? 12 : 14,
+                          paddingBlock: isMobile ? 12 : 16,
                           paddingInline: 14,
                         },
                       },
