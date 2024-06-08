@@ -15,9 +15,10 @@ const config: Config = {
       },
     },
     colors: {
-      mainColor: "#443CC5",
+      main: "#443CC5",
       disabled: "#919EAB",
       secondary: "#637381",
+      error: "#CB1E1E",
     },
   },
   plugins: [],

@@ -29,8 +29,12 @@
   }
 
   .ant-input-group-addon {
-    background-color: #C5C3ED !important;
+    background-color: #E3E2F6 !important;
   }
+
+  /* .ant-typography {
+    color: #212B36 !important
+  } */
 }
 
 @media (prefers-color-scheme: dark) {
