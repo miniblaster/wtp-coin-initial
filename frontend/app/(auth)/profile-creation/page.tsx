@@ -143,6 +143,7 @@ export default function Page() {
                   <Flex className="flex flex-col items-center w-full px-4 lg:px-0 gap-y-2 lg:gap-y-5 bg-[white] rounded-[16px]">
                     <Flex className="flex flex-col items-center py-4 gap-y-2 lg:gap-y-6">
                       <Image
+                        priority
                         src={UploadPhoto}
                         alt="Upload"
                         className="w-[132px] h-auto"
@@ -308,11 +309,11 @@ export default function Page() {
             </Flex>
             <Flex className="w-full px-16 hidden lg:flex">
               <Flex className="w-full flex justify-end gap-x-6">
-                <Button className="text-main text-[15px]/[26px] flex justify-center items-center w-[116px] h-12">
+                <Button className="text-main text-[15px]/[26px] font-bold flex justify-center items-center w-[116px] h-12">
                   Cancel
                 </Button>
                 <Button className="bg-main flex justify-center items-center w-[116px] h-12">
-                  <Typography className="text-[white] text-[15px]/[26px]">
+                  <Typography className="text-[white] text-[15px]/[26px] font-bold">
                     Next
                   </Typography>
                   <Image
