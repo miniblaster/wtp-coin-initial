@@ -31,12 +31,14 @@ import { getParamByISO, getParamByParam } from "iso-country-currency";
 import { languages } from "countries-list";
 
 export default function Page() {
+  //Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
+  // Judge whether mobile view
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const handleResize = () => {
     setIsMobile(window.innerWidth < 1024);
@@ -49,6 +51,7 @@ export default function Page() {
     };
   }, []);
 
+  // Handle countries, currencies, flags, languages
   const [countryList, setCountryList] = useState<any[]>(
     countryData.getAllISOCodes()
   );
@@ -86,7 +89,7 @@ export default function Page() {
     <>
       {loaded ? (
         <>
-          <Flex className="w-full lg:h-screen flex flex-col">
+          <Flex className="w-full flex flex-col">
             <Flex // Header
               align="center"
               className="w-full h-11 lg:h-[72px] flex justify-center lg:justify-between items-center lg:px-8 lg:shadow-md"
@@ -142,7 +145,6 @@ export default function Page() {
                       <Image
                         src={UploadPhoto}
                         alt="Upload"
-                        priority
                         className="w-[132px] h-auto"
                       />
                       <Typography className="text-[12px]/[16px] font-medium text-disabled text-center w-full lg:mx-6">
