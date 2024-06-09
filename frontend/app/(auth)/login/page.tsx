@@ -65,22 +65,32 @@ export default function Page() {
                 className="w-full lg:h-full py-4 gap-y-4 lg:gap-y-20 bg-main/[12%]"
               >
                 <Flex className="flex flex-col w-full max-w-[480px] px-4 lg:px-0 gap-y-2 lg:gap-y-5">
-                  <Typography className="text-center text-xl/[30px] lg:text-[32px]/[48px] font-bold text-main">
-                    WETP: Tomorrow&apos;s currency, today!
-                  </Typography>
                   <Typography className="text-center text-[12px]/[20px] lg:text-[14px]/[20px]">
-                    Be part of the{" "}
-                    <span className="text-main font-bold">WETP</span>{" "}
-                    revolution. Secure your financial future with a stable
-                    currency.
+                    <span className="hidden lg:block">
+                      Your journey towards financial freedom continues.
+                    </span>
+                    <span className="lg:hidden">
+                      Log in and explore the full potential of{" "}
+                    </span>
+                    <span className="hidden lg:flex">
+                      Log in and take advantage of all that&nbsp;
+                      <Link href="#">WeThePeople</Link>
+                      &nbsp;has to offer.
+                    </span>
+                    <span className="text-main font-bold lg:hidden">WETP</span>.
+                    <span className="lg:hidden">
+                      &nbsp;Connect your wallets, send payments, and more.
+                    </span>
                   </Typography>
                 </Flex>
-                <Image
-                  src={Banner}
-                  alt="Banner"
-                  priority
-                  className="w-[222px] lg:w-[504px] h-auto"
-                />
+                <Flex justify="center" className="w-full lg:px-32">
+                  <Image
+                    src={Banner}
+                    alt="Banner"
+                    priority
+                    className="w-[222px] lg:w-full lg:max-w-[504px] h-auto"
+                  />
+                </Flex>
               </Flex>
             </Flex>
             <Flex // signup form
@@ -90,18 +100,9 @@ export default function Page() {
             >
               <Flex vertical className="w-full gap-y-7 lg:gap-y-10">
                 <Flex vertical className="w-full gap-y-4">
-                  <Typography className="text-xl/[30px] font-bold lg:text-center">
-                    Let&apos;s get started!
+                  <Typography className="text-xl/[30px] lg:text-[24px]/[36px] font-bold">
+                    We&apos;ve Been Expecting You!
                   </Typography>
-                  <Flex
-                    justify="center"
-                    className="w-full gap-x-1 hidden lg:flex"
-                  >
-                    <Typography>Already have an account?</Typography>
-                    <Link href="#" className="text-main">
-                      Login
-                    </Link>
-                  </Flex>
                 </Flex>
                 <Flex vertical className="w-full gap-y-5">
                   <ConfigProvider // mobile view
@@ -118,50 +119,43 @@ export default function Page() {
                       },
                     }}
                   >
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        Claim your Username!
+                    <Flex vertical className="w-full gap-y-2 lg:gap-y-3">
+                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold flex items-center">
+                        Username or Email&nbsp;
+                        <span className="text-secondary hidden lg:flex text-[12px]/[12px]">
+                          (Optional)
+                        </span>
                       </Typography>
                       <Input
                         addonBefore="wetp.com/"
                         placeholder="senesa.sage"
                       />
                     </Flex>
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        How shall we address you?
-                        <span className="text-secondary">(Optional)</span>
-                      </Typography>
-                      <Input placeholder="Alex" />
-                    </Flex>
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        Email
-                      </Typography>
-                      <Input placeholder="alexspensor@gmail.com" />
-                    </Flex>
-                    <Flex vertical className="w-full gap-y-2">
+                    <Flex vertical className="w-full gap-y-2 lg:gap-y-3">
                       <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
                         Password
                       </Typography>
                       <Input.Password placeholder="Enter password" />
                     </Flex>
+                    <Typography className="text-[12px]/[20px] font-medium text-main text-center">
+                      Forgot Password?
+                    </Typography>
                   </ConfigProvider>
-                </Flex>
-                <Flex className="w-full border-dashed border-[#C4CDD5] border rounded-md px-3 py-1 text-xs/[20px] gap-x-2 lg:hidden">
-                  <Checkbox>
-                    By signing up, I agree to Terms of Use and Privacy Policy.
-                  </Checkbox>
                 </Flex>
               </Flex>
               <Flex vertical className="w-full gap-y-6">
-                <Button className="text-[white] font-bold py-[11px] bg-main h-fit">
-                  Create Account
+                <Button className="text-[white] font-bold py-[11px] bg-main h-fit text-[15px]/[26px]">
+                  Login
                 </Button>
-                <Flex justify="center" className="w-full gap-x-1 lg:hidden">
-                  <Typography>Already have an account?</Typography>
-                  <Link href="#" className="text-main">
-                    Login
+                <Flex justify="center" className="w-full gap-x-1">
+                  <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-medium">
+                    Don&apos;t have an account?
+                  </Typography>
+                  <Link
+                    href="#"
+                    className="text-main text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold"
+                  >
+                    Sign Up
                   </Link>
                 </Flex>
                 <Flex
