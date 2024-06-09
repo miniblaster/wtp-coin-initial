@@ -35,6 +35,9 @@
   /* .ant-typography {
     color: #212B36 !important
   } */
+  /* .ant-select-selector {
+    padding: 12px 14px !important;
+  } */
 }
 
 @media (prefers-color-scheme: dark) {

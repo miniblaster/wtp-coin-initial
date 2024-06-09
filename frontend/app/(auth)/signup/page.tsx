@@ -102,7 +102,7 @@ export default function Page() {
                     </Link>
                   </Flex>
                 </Flex>
-                <Flex vertical className="w-full gap-y-5 lg:hidden">
+                <Flex vertical className="w-full gap-y-5">
                   <ConfigProvider // mobile view
                     theme={{
                       token: {
@@ -112,51 +112,6 @@ export default function Page() {
                         Input: {
                           inputFontSize: isMobile ? 12 : 14,
                           paddingBlock: isMobile ? 12 : 16,
-                          paddingInline: 14,
-                        },
-                      },
-                    }}
-                  >
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        Claim your Username!
-                      </Typography>
-                      <Input
-                        addonBefore="wetp.com/"
-                        placeholder="senesa.sage"
-                      />
-                    </Flex>
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        How shall we address you?
-                        <span className="text-secondary">(Optional)</span>
-                      </Typography>
-                      <Input placeholder="Alex" />
-                    </Flex>
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        Email
-                      </Typography>
-                      <Input placeholder="alexspensor@gmail.com" />
-                    </Flex>
-                    <Flex vertical className="w-full gap-y-2">
-                      <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
-                        Password
-                      </Typography>
-                      <Input placeholder="Enter password" />
-                    </Flex>
-                  </ConfigProvider>
-                </Flex>
-                <Flex vertical className="w-full gap-y-5 hidden lg:flex">
-                  <ConfigProvider // desktop view
-                    theme={{
-                      token: {
-                        lineHeight: 1.333,
-                      },
-                      components: {
-                        Input: {
-                          inputFontSize: 14,
-                          paddingBlock: 16,
                           paddingInline: 14,
                         },
                       },

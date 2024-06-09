@@ -19,6 +19,7 @@ const config: Config = {
       disabled: "#919EAB",
       secondary: "#637381",
       error: "#CB1E1E",
+      focus: "#919EAB",
     },
   },
   plugins: [],
