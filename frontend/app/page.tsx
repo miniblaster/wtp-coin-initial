@@ -1,5 +1,17 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState, useRef } from "react";
 
-export default function Home() {
-  return <>First Page</>;
-}
+const Counter = () => {
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if (!effectRan.current) {
+      console.log("effect applied - only on the FIRST mount");
+    }
+
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
+};
+
+export default Counter;

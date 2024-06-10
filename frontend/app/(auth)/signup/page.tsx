@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // import from antd
 import {
@@ -24,6 +25,8 @@ import LoadingSpin from "@/components/general/loadingSpin";
 import Banner from "@/public/images/auth/Banner.svg";
 
 export default function Page() {
+  const router = useRouter();
+
   // Judge whether loaded
   const [loaded, setLoaded] = useState<boolean>(false);
   useEffect(() => {
@@ -42,6 +45,11 @@ export default function Page() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  // eventHandlers
+  const onCreateAccountHandler = () => {
+    router.push("/profile-creation");
+  };
 
   return (
     <>
@@ -90,7 +98,7 @@ export default function Page() {
                     className="w-full gap-x-1 hidden lg:flex"
                   >
                     <Typography>Already have an account?</Typography>
-                    <Link href="#" className="text-main">
+                    <Link href="/login" className="text-main">
                       Login
                     </Link>
                   </Flex>
@@ -127,7 +135,7 @@ export default function Page() {
                       <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
                         Email
                       </Typography>
-                      <Input placeholder="alexspensor@gmail.com" />
+                      <Input type="email" placeholder="alexspensor@gmail.com" />
                     </Flex>
                     <Flex vertical className="w-full gap-y-2">
                       <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
@@ -144,7 +152,10 @@ export default function Page() {
                 </Flex>
               </Flex>
               <Flex vertical className="w-full gap-y-6">
-                <Button className="text-[white] font-bold py-[11px] bg-main h-fit">
+                <Button
+                  onClick={onCreateAccountHandler}
+                  className="text-[white] font-bold py-[11px] bg-main h-fit"
+                >
                   Create Account
                 </Button>
                 <Flex justify="center" className="w-full gap-x-1 lg:hidden">
@@ -152,7 +163,7 @@ export default function Page() {
                     Already have an account?
                   </Typography>
                   <Link
-                    href="#"
+                    href="/login"
                     className="text-main text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold"
                   >
                     Login

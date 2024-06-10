@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // import from antd
 import { Flex, Typography, Button } from "antd";
 
 // import from components
-import LoadingSpin from "@/components/general/loadingSpin";
+import SpinLoading from "@/components/general/SpinLoading";
 import OTPInput from "@/components/auth/input/OTPInput";
 import AuthHeader from "@/components/auth/header/Header-auth";
 
@@ -20,6 +21,8 @@ import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 // import from other modules
 
 export default function Page() {
+  const router = useRouter();
+
   // Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -41,7 +44,20 @@ export default function Page() {
   }, []);
 
   // Judge whether success or failed
-  const [isVerified, setIsVerified] = useState<boolean>(true);
+  const [isVerified, setIsVerified] = useState<boolean>(false);
+
+  // eventHandlers
+  const onClickVerifyOTPHandler = () => {
+    setIsVerified(true);
+  };
+
+  const onClickCancelHandler = () => {
+    router.push("/profile-creation");
+  };
+
+  const onClickContinueHandler = () => {
+    console.log("Continue button clicked");
+  };
 
   return (
     <>
@@ -83,14 +99,23 @@ export default function Page() {
             <Flex vertical className="w-full px-4 gap-y-6">
               <Flex vertical className="w-full gap-y-3">
                 <Button
-                  onClick={() => {
-                    setIsVerified(!isVerified);
-                  }}
-                  className="text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit"
+                  onClick={onClickVerifyOTPHandler}
+                  className={`text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit ${
+                    isVerified ? "hidden" : ""
+                  }`}
                 >
-                  {!isVerified ? "Verify OTP" : "Continue"}
+                  Verify OTP
                 </Button>
                 <Button
+                  onClick={onClickContinueHandler}
+                  className={`text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit ${
+                    !isVerified ? "hidden" : ""
+                  }`}
+                >
+                  Continue
+                </Button>
+                <Button
+                  onClick={onClickCancelHandler}
                   className={`text-[15px]/[26px] font-bold text-secondary bg-[white] py-[11px] h-fit lg:hidden ${
                     isVerified ? "hidden" : ""
                   }`}
@@ -134,7 +159,7 @@ export default function Page() {
           </Flex>
         </Flex>
       ) : (
-        <LoadingSpin />
+        <SpinLoading />
       )}
     </>
   );

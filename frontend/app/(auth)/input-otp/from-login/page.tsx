@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // import from antd
 import { Flex, Typography, Button } from "antd";
 
 // import from components
-import LoadingSpin from "@/components/general/loadingSpin";
+import SpinLoading from "@/components/general/SpinLoading";
 import OTPInput from "@/components/auth/input/OTPInput";
 import AuthHeader from "@/components/auth/header/Header-auth";
 
@@ -22,6 +23,8 @@ import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 // import from other modules
 
 export default function Page() {
+  const router = useRouter();
+
   // Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -45,6 +48,14 @@ export default function Page() {
   // Judge whether success or failed
   const [isVerified, setIsVerified] = useState<boolean>(false);
 
+  // event handlers
+  const onClickVerifyOTPHandler = () => {
+    router.push("/reset-password");
+  };
+  const onClickCancelHandler = () => {
+    router.push("/forgot-password");
+  };
+
   return (
     <>
       {loaded ? (
@@ -56,11 +67,9 @@ export default function Page() {
           >
             <Image
               priority
-              src={!isVerified ? SendRequestIcon : OTPVerified}
+              src={SendRequestIcon}
               alt="SendRequest"
-              className={`h-auto ${
-                !isVerified ? "w-[146px]" : "w-[200px]"
-              } lg:w-[188px]`}
+              className={`h-auto w-[146px] lg:w-[188px]`}
             />
             <Flex vertical className="w-full px-4 gap-y-8 lg:gap-y-2">
               <Typography className="text-center text-[20px]/[30px] lg:text-[32px]/[48px] font-bold">
@@ -79,14 +88,13 @@ export default function Page() {
             <Flex vertical className="w-full px-4 gap-y-6">
               <Flex vertical className="w-full gap-y-3">
                 <Button
-                  onClick={() => {
-                    setIsVerified(!isVerified);
-                  }}
+                  onClick={onClickVerifyOTPHandler}
                   className="text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit"
                 >
                   Verify OTP
                 </Button>
                 <Button
+                  onClick={onClickCancelHandler}
                   className={`text-[15px]/[26px] font-bold text-secondary bg-[white] py-[11px] h-fit`}
                 >
                   Cancel
@@ -108,7 +116,7 @@ export default function Page() {
                   Already have an account?
                 </Typography>
                 <Link
-                  href="#"
+                  href="/login"
                   className="text-main text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold"
                 >
                   Login
@@ -120,7 +128,7 @@ export default function Page() {
                 className={`w-full gap-x-1`}
               >
                 <Link
-                  href="#"
+                  href="/login"
                   className="text-[14px]/[20px] font-semibold flex text-[black]"
                 >
                   <Image
@@ -135,7 +143,7 @@ export default function Page() {
           </Flex>
         </Flex>
       ) : (
-        <LoadingSpin />
+        <SpinLoading />
       )}
     </>
   );

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // import from antd
 import {
@@ -32,6 +33,8 @@ import { getParamByParam } from "iso-country-currency";
 import { languages } from "countries-list";
 
 export default function Page() {
+  const router = useRouter();
+
   //Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -85,6 +88,15 @@ export default function Page() {
       }
     });
   });
+
+  // event handlers
+  const onClickNextHandler = () => {
+    router.push("/input-otp/from-signup");
+  };
+
+  const onClickCancelHandler = () => {
+    router.push("/signup");
+  };
 
   return (
     <>
@@ -267,10 +279,16 @@ export default function Page() {
 
                     <Flex vertical className="w-full gap-y-6 lg:hidden">
                       <Flex vertical className="w-full gap-y-3">
-                        <Button className="text-[white] font-bold py-[11px] bg-main h-fit w-full">
+                        <Button
+                          onClick={onClickNextHandler}
+                          className="text-[white] font-bold py-[11px] bg-main h-fit w-full"
+                        >
                           Next
                         </Button>
-                        <Button className="text-secondary font-bold py-[11px] h-fit w-full">
+                        <Button
+                          onClick={onClickCancelHandler}
+                          className="text-secondary font-bold py-[11px] h-fit w-full"
+                        >
                           Cancel
                         </Button>
                       </Flex>
@@ -282,7 +300,7 @@ export default function Page() {
                           Already have an account?
                         </Typography>
                         <Link
-                          href="#"
+                          href="/login"
                           className="text-main text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold"
                         >
                           Login
@@ -294,10 +312,16 @@ export default function Page() {
               </Flex>
               <Flex className="w-full px-16 hidden lg:flex">
                 <Flex className="w-full flex justify-end gap-x-6">
-                  <Button className="text-main text-[15px]/[26px] font-bold flex justify-center items-center w-[116px] h-12">
+                  <Button
+                    onClick={onClickCancelHandler}
+                    className="text-main text-[15px]/[26px] font-bold flex justify-center items-center w-[116px] h-12"
+                  >
                     Cancel
                   </Button>
-                  <Button className="bg-main flex justify-center items-center w-[116px] h-12">
+                  <Button
+                    onClick={onClickNextHandler}
+                    className="bg-main flex justify-center items-center w-[116px] h-12"
+                  >
                     <Typography className="text-[white] text-[15px]/[26px] font-bold">
                       Next
                     </Typography>

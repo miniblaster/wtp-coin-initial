@@ -4,27 +4,28 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 // import from antd
 import {
   Flex,
   Typography,
-  Spin,
   Input,
   Checkbox,
   Button,
   ConfigProvider,
 } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 
 // import from components
 import Header from "@/components/auth/header/Header-0";
-import LoadingSpin from "@/components/general/loadingSpin";
+import SpinLoading from "@/components/general/SpinLoading";
 
 // import images
 import Banner from "@/public/images/auth/Banner.svg";
 
 export default function Page() {
+  const router = useRouter();
+
   // Judge whether loaded
   const [loaded, setLoaded] = useState<boolean>(false);
   useEffect(() => {
@@ -43,6 +44,11 @@ export default function Page() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  // event Handlers
+  const onClickLoginHandler = () => {
+    console.log("Login clicked");
+  };
 
   return (
     <>
@@ -130,14 +136,22 @@ export default function Page() {
                       </Typography>
                       <Input.Password placeholder="Enter password" />
                     </Flex>
-                    <Typography className="text-[12px]/[20px] font-medium text-main text-center">
+                    <Typography
+                      onClick={() => {
+                        router.push("/forgot-password");
+                      }}
+                      className="text-[12px]/[20px] font-medium text-main text-center"
+                    >
                       Forgot Password?
                     </Typography>
                   </ConfigProvider>
                 </Flex>
               </Flex>
               <Flex vertical className="w-full gap-y-6">
-                <Button className="text-[white] font-bold py-[11px] bg-main h-fit text-[15px]/[26px]">
+                <Button
+                  onClick={onClickLoginHandler}
+                  className="text-[white] font-bold py-[11px] bg-main h-fit text-[15px]/[26px]"
+                >
                   Login
                 </Button>
                 <Flex justify="center" className="w-full gap-x-1">
@@ -145,7 +159,7 @@ export default function Page() {
                     Don&apos;t have an account?
                   </Typography>
                   <Link
-                    href="#"
+                    href="/signup"
                     className="text-main text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold"
                   >
                     Sign Up
@@ -172,7 +186,7 @@ export default function Page() {
           </Flex>
         </>
       ) : (
-        <LoadingSpin />
+        <SpinLoading />
       )}
     </>
   );
