@@ -20,7 +20,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 
 // import from components
 import AuthHeader from "@/components/auth/header/Header-auth";
-import LoadingSpin from "@/components/general/loadingSpin";
+import SpinLoading from "@/components/general/SpinLoading";
 
 // import images
 import UploadPhoto from "@/public/images/auth/UploadPhoto.svg";
@@ -61,21 +61,21 @@ export default function Page() {
   );
   const [countryISOCode, setCountryISOCode] = useState<string>("");
   const [localCurrency, setLocalCurrency] = useState<string>("");
-  const [preferedLanguage, setPreferedLanguage] = useState<string>("");
+  // const [preferedLanguage, setPreferedLanguage] = useState<string>("");
 
   const changeCountryHandler = (value: any) => {
     setCountryISOCode(value);
     setLocalCurrency(getParamByParam("countryName", value, "currency"));
     console.log(value);
   };
-  const changeLanguageHandler = (value: any) => {
-    setPreferedLanguage(value);
-    console.log(value);
-  };
+  // const changeLanguageHandler = (value: any) => {
+  //   setPreferedLanguage(value);
+  //   console.log(value);
+  // };
   const countryFilterOption = (input: string, option?: { value: string }) =>
     (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
-  const languageFilterOption = (input: string, option?: { value: string }) =>
-    (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
+  // const languageFilterOption = (input: string, option?: { value: string }) =>
+  //   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
   useEffect(() => {
     countryList.sort((a: any, b: any) => {
@@ -337,7 +337,7 @@ export default function Page() {
           </Flex>
         </>
       ) : (
-        <LoadingSpin />
+        <SpinLoading />
       )}
     </>
   );

@@ -19,7 +19,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 
 // import from components
 import Header from "@/components/auth/header/Header-0";
-import LoadingSpin from "@/components/general/loadingSpin";
+import SpinLoading from "@/components/general/SpinLoading";
 
 // import images
 import Banner from "@/public/images/auth/Banner.svg";
@@ -190,7 +190,7 @@ export default function Page() {
           </Flex>
         </>
       ) : (
-        <LoadingSpin />
+        <SpinLoading />
       )}
     </>
   );
