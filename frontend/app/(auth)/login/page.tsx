@@ -1,4 +1,5 @@
 "use client";
+
 // import from react/next
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -16,8 +17,11 @@ import {
 } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 
+// import from components
+import Header from "@/components/auth/header/Header-0";
+import LoadingSpin from "@/components/general/loadingSpin";
+
 // import images
-import Logomark from "@/public/images/auth/Logomark.svg";
 import Banner from "@/public/images/auth/Banner.svg";
 
 export default function Page() {
@@ -46,18 +50,7 @@ export default function Page() {
         <>
           <Flex className="w-full lg:h-screen flex flex-col lg:flex-row">
             <Flex className="w-full lg:w-1/2 flex flex-col">
-              <Flex // Header
-                className="w-full h-11 lg:h-[72px] bg-main/[12%] flex justify-center lg:justify-start items-center"
-              >
-                <Image
-                  src={Logomark}
-                  alt="Logomark"
-                  className="w-[25.6px] lg:w-10 h-auto mr-[6.4px] lg:ml-8"
-                />
-                <Typography className="text-[14.4px]/[27.43px] lg:text-[22.86px]/[34.29px] font-bold text-main">
-                  WeThePeople
-                </Typography>
-              </Flex>
+              <Header />
               <Flex // Banner
                 vertical
                 justify="center"
@@ -179,9 +172,7 @@ export default function Page() {
           </Flex>
         </>
       ) : (
-        <Flex justify="center" align="center" className="w-screen h-screen">
-          <Spin indicator={<LoadingOutlined className="text-[100px]" />} />
-        </Flex>
+        <LoadingSpin />
       )}
     </>
   );
