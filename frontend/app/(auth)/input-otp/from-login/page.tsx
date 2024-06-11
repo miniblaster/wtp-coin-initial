@@ -14,10 +14,7 @@ import OTPInput from "@/components/auth/input/OTPInput";
 import AuthHeader from "@/components/auth/header/Header-auth";
 
 // import images
-import Logomark from "@/public/images/auth/Logomark.svg";
 import SendRequestIcon from "@/public/images/auth/SendRequest.svg";
-import SettingIcon from "@/public/images/auth/ic-settings.svg";
-import OTPVerified from "@/public/images/auth/OTPVerified.svg";
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 
 // import from other modules
@@ -111,7 +108,7 @@ export default function Page() {
                   Resend code
                 </Link>
               </Flex>
-              <Flex justify="center" className={`w-full gap-x-1 ${"hidden"}`}>
+              <Flex justify="center" className="w-full gap-x-1">
                 <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-medium">
                   Already have an account?
                 </Typography>
@@ -122,11 +119,7 @@ export default function Page() {
                   Login
                 </Link>
               </Flex>
-              <Flex
-                justify="center"
-                align="center"
-                className={`w-full gap-x-1`}
-              >
+              <Flex justify="center" align="center" className="w-full gap-x-1">
                 <Link
                   href="/login"
                   className="text-[14px]/[20px] font-semibold flex text-[black]"

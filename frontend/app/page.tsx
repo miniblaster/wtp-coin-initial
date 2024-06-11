@@ -1,17 +1,15 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
 
-const Counter = () => {
-  const effectRan = useRef(false);
-  useEffect(() => {
-    if (!effectRan.current) {
-      console.log("effect applied - only on the FIRST mount");
-    }
+import classNames from "classnames";
+import { useState } from "react";
 
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
-};
-
-export default Counter;
+export default function Page() {
+  const [flag] = useState(false);
+  return (
+    <div
+      className={classNames("font-bold", flag ? "text-[red]" : "text-[blue]")}
+    >
+      hello
+    </div>
+  );
+}
