@@ -9,13 +9,11 @@ import { useRouter } from "next/navigation";
 import {
   Flex,
   Typography,
-  Spin,
   Input,
   Checkbox,
   Button,
   ConfigProvider,
 } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 
 // import from components
 import Header from "@/components/auth/header/Header-0";

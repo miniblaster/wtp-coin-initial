@@ -19,6 +19,7 @@ import OTPVerified from "@/public/images/auth/OTPVerified.svg";
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 
 // import from other modules
+import classNames from "classnames";
 
 export default function Page() {
   const router = useRouter();
@@ -72,9 +73,10 @@ export default function Page() {
               priority
               src={!isVerified ? SendRequestIcon : OTPVerified}
               alt="SendRequest"
-              className={`${
+              className={classNames(
+                "lg:w-[188px] h-auto",
                 !isVerified ? "w-[146px]" : "w-[200px]"
-              } lg:w-[188px] h-auto`}
+              )}
             />
             <Flex vertical className="w-full px-4 gap-y-8 lg:gap-y-2">
               <Typography className="text-center text-[20px]/[30px] lg:text-[32px]/[48px] font-bold">
@@ -92,7 +94,7 @@ export default function Page() {
             </Flex>
             <Flex
               justify="center"
-              className={`w-full px-4 ${isVerified ? "hidden" : ""}`}
+              className={classNames("w-full px-4", isVerified ? "hidden" : "")}
             >
               <OTPInput />
             </Flex>
@@ -100,25 +102,28 @@ export default function Page() {
               <Flex vertical className="w-full gap-y-3">
                 <Button
                   onClick={onClickVerifyOTPHandler}
-                  className={`text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit ${
+                  className={classNames(
+                    "text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit",
                     isVerified ? "hidden" : ""
-                  }`}
+                  )}
                 >
                   Verify OTP
                 </Button>
                 <Button
                   onClick={onClickContinueHandler}
-                  className={`text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit ${
+                  className={classNames(
+                    "text-[15px]/[26px] font-bold text-[white] bg-main py-[11px] h-fit",
                     !isVerified ? "hidden" : ""
-                  }`}
+                  )}
                 >
                   Continue
                 </Button>
                 <Button
                   onClick={onClickCancelHandler}
-                  className={`text-[15px]/[26px] font-bold text-secondary bg-[white] py-[11px] h-fit lg:hidden ${
+                  className={classNames(
+                    "text-[15px]/[26px] font-bold text-secondary bg-[white] py-[11px] h-fit lg:hidden",
                     isVerified ? "hidden" : ""
-                  }`}
+                  )}
                 >
                   Cancel
                 </Button>
@@ -126,7 +131,10 @@ export default function Page() {
               <Flex
                 justify="center"
                 align="center"
-                className={`w-full gap-x-1 ${isVerified ? "hidden" : ""}`}
+                className={classNames(
+                  "w-full gap-x-1",
+                  isVerified ? "hidden" : ""
+                )}
               >
                 <Typography className="text-[12px]/[16px] font-medium">
                   Don’t have a code?
@@ -141,7 +149,7 @@ export default function Page() {
               <Flex
                 justify="center"
                 align="center"
-                className={`w-full gap-x-1 hidden`}
+                className="w-full gap-x-1 hidden"
               >
                 <Link
                   href="#"

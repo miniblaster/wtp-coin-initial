@@ -19,6 +19,9 @@ import OTPVerified from "@/public/images/auth/OTPVerified.svg";
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 import PasswordUpdated from "@/public/images/auth/PasswordUpdated.svg";
 
+// import from other modules
+import classNames from "classnames";
+
 export default function Page() {
   const router = useRouter();
 
@@ -69,11 +72,12 @@ export default function Page() {
                 priority
                 src={!isUpdated ? OTPVerified : PasswordUpdated}
                 alt="OTPVerified"
-                className={`${
+                className={classNames(
+                  "h-auto",
                   !isUpdated
                     ? "w-[200px] lg:w-[188px]"
                     : "w-[132px] lg:w-[86.58px] rounded-full shadow-xl"
-                } h-auto`}
+                )}
               />
               <Flex className="w-full flex flex-col justify-center items-center gap-y-8 lg:gap-y-2 px-4 lg:py-4">
                 <Typography className="text-[20px]/[30px] lg:text-[32px]/[48px] font-bold text-center">
@@ -93,9 +97,10 @@ export default function Page() {
               </Flex>
               <Flex
                 vertical
-                className={`w-full px-4 lg:px-6 gap-y-5 ${
+                className={classNames(
+                  "w-full px-4 lg:px-6 gap-y-5",
                   isUpdated ? "hidden" : ""
-                }`}
+                )}
               >
                 <Flex vertical className="w-full gap-y-2">
                   <Typography className="text-[12px]/[16px] font-semibold">
@@ -112,9 +117,10 @@ export default function Page() {
               </Flex>
               <Flex
                 vertical
-                className={`w-full px-4 lg:px-6 gap-y-6 ${
+                className={classNames(
+                  "w-full px-4 lg:px-6 gap-y-6",
                   isUpdated ? "hidden" : ""
-                }`}
+                )}
               >
                 <Flex vertical className={`w-full gap-y-3`}>
                   <Button
@@ -162,9 +168,10 @@ export default function Page() {
               </Flex>
               <Flex
                 vertical
-                className={`w-full px-4 lg:px-6 gap-y-6 ${
+                className={classNames(
+                  "w-full px-4 lg:px-6 gap-y-6",
                   !isUpdated ? "hidden" : ""
-                }`}
+                )}
               >
                 <Button
                   onClick={onClickContinueHandler}
