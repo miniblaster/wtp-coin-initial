@@ -1,10 +1,15 @@
 "use client";
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { ConfigProvider, theme } from "antd";
-import "./globals.css";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
+
+import { ConfigProvider } from "antd";
 import { StyleProvider } from "@ant-design/cssinjs";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+
+import classNames from "classnames";
+
+import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,17 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-[white] ${poppins.className}`}>
+      <body className={classNames("bg-[white]", poppins.className)}>
         <AntdRegistry>
           <ConfigProvider
             theme={{
-              token: {
-                fontFamily: { poppins },
-              },
+              token: { fontFamily: poppins.style.fontFamily },
               components: {
-                Input: {
-                  colorBgBase: "#ffffff",
-                },
+                Input: { colorBgBase: "#ffffff" },
               },
             }}
           >

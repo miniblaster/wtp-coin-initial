@@ -9,9 +9,9 @@ import { Flex, Typography, Button } from "antd";
 
 import classNames from "classnames";
 
-import WETPOTPInput from "@/components/auth/input/WETPOTPInput";
 import SpinLoading from "@/components/general/SpinLoading";
 import AuthHeader from "@/components/auth/header/Header-auth";
+import WETPOTPInput from "@/components/auth/input/WETPOTPInput";
 
 import OTPVerified from "@/public/images/auth/OTPVerified.svg";
 import SendRequestIcon from "@/public/images/auth/SendRequest.svg";
@@ -57,7 +57,7 @@ export default function Page() {
       {loaded ? (
         <Flex vertical align="center" className="w-full">
           <AuthHeader />
-          <Flex // Main Content
+          <Flex
             vertical
             className="flex justify-center items-center w-full lg:max-w-[504px] py-4 lg:py-10 lg:mt-20 gap-y-8 lg:rounded-[16px] lg:shadow-md"
           >
@@ -129,7 +129,7 @@ export default function Page() {
                 )}
               >
                 <Typography className="text-[12px]/[16px] font-medium">
-                  Don’t have a code?
+                  Don&apos;t have a code?
                 </Typography>
                 <Link
                   href="#"

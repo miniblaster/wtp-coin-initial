@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { Flex, Typography, Button, Input } from "antd";
@@ -40,7 +40,7 @@ export default function Page() {
       {loaded ? (
         <Flex vertical align="center" className="w-full">
           <AuthHeader />
-          <Flex // Main Content
+          <Flex
             vertical
             className="flex justify-center items-center w-full lg:max-w-[504px] py-4 lg:py-10 gap-y-8 lg:mt-20 lg:rounded-[16px] lg:shadow-md"
           >

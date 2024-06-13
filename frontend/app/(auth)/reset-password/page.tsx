@@ -1,33 +1,28 @@
 "use client";
 
-// import from react/next
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-// import from antd
-import { Flex, Typography, Input, ConfigProvider, Button } from "antd";
+import { Flex, Typography, Button } from "antd";
 
-// import from components
+import classNames from "classnames";
+
 import AuthHeader from "@/components/auth/header/Header-auth";
 import WETPPassword from "@/components/auth/input/WETPPassword";
 import SpinLoading from "@/components/general/SpinLoading";
 
-// import from images
 import OTPVerified from "@/public/images/auth/OTPVerified.svg";
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 import PasswordUpdated from "@/public/images/auth/PasswordUpdated.svg";
-
-// import from other modules
-import classNames from "classnames";
 
 export default function Page() {
   const router = useRouter();
 
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isUpdated, setIsUpdated] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
@@ -63,9 +58,7 @@ export default function Page() {
         <Flex vertical align="center" className="w-full">
           <AuthHeader />
           <Flex className="w-full lg:pt-20">
-            <Flex // main content
-              className="w-full lg:max-w-[504px] py-4 lg:py-10 flex flex-col justify-center items-center gap-y-8 lg:gap-y-6 lg:mx-auto lg:shadow-lg lg:rounded-[16px]"
-            >
+            <Flex className="w-full lg:max-w-[504px] py-4 lg:py-10 flex flex-col justify-center items-center gap-y-8 lg:gap-y-6 lg:mx-auto lg:shadow-lg lg:rounded-[16px]">
               <Image
                 priority
                 src={!isUpdated ? OTPVerified : PasswordUpdated}

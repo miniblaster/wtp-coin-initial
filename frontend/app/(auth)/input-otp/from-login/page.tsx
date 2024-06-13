@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 
 import { Flex, Typography, Button } from "antd";
 
-import WETPOTPInput from "@/components/auth/input/WETPOTPInput";
 import SpinLoading from "@/components/general/SpinLoading";
 import AuthHeader from "@/components/auth/header/Header-auth";
+import WETPOTPInput from "@/components/auth/input/WETPOTPInput";
 
 import SendRequestIcon from "@/public/images/auth/SendRequest.svg";
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
@@ -18,7 +18,6 @@ export default function Page() {
   const router = useRouter();
 
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [isVerified, setIsVerified] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -50,7 +49,7 @@ export default function Page() {
       {loaded ? (
         <Flex vertical align="center" className="w-full">
           <AuthHeader />
-          <Flex // Main Content
+          <Flex
             vertical
             className="flex justify-center items-center w-full lg:max-w-[504px] py-4 lg:py-10 gap-y-8 lg:my-20 lg:rounded-[16px] lg:shadow-md"
           >
@@ -91,7 +90,7 @@ export default function Page() {
               </Flex>
               <Flex justify="center" align="center" className="w-full gap-x-1">
                 <Typography className="text-[12px]/[16px] font-medium">
-                  Don’t have a code?
+                  Don&apos;t have a code?
                 </Typography>
                 <Link
                   href="#"
