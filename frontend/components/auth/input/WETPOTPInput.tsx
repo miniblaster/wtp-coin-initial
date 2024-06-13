@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { ConfigProvider } from "antd";
 import OTP from "antd/es/input/OTP";
 
-export default function OTPInput() {
+export default function WETPOTPInput() {
   // Judge whether mobile view
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const handleResize = () => {

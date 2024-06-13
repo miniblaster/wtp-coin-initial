@@ -11,7 +11,7 @@ import { Flex, Typography, Input, ConfigProvider, Button } from "antd";
 
 // import from components
 import AuthHeader from "@/components/auth/header/Header-auth";
-import WETPPassword from "@/components/auth/input/Password";
+import WETPPassword from "@/components/auth/input/WETPPassword";
 import SpinLoading from "@/components/general/SpinLoading";
 
 // import from images
@@ -25,18 +25,14 @@ import classNames from "classnames";
 export default function Page() {
   const router = useRouter();
 
-  // Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isUpdated, setIsUpdated] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
-  // Judge whether mobile view
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1024);
-  };
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -45,16 +41,18 @@ export default function Page() {
     };
   }, []);
 
-  // Judge whether updated or not yet
-  const [isUpdated, setIsUpdated] = useState<boolean>(false);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
 
-  // event handlers
   const onClickResetHandler = () => {
     setIsUpdated(true);
   };
+
   const onClickCancelHandler = () => {
     router.push("/input-otp/from-login");
   };
+
   const onClickContinueHandler = () => {
     setIsUpdated(false);
   };

@@ -1,12 +1,10 @@
 "use client";
 
-// import from react/next
-import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-// import from antd
 import {
   Flex,
   Typography,
@@ -16,27 +14,20 @@ import {
   ConfigProvider,
 } from "antd";
 
-// import from components
-import Header from "@/components/auth/header/Header-0";
-import SpinLoading from "@/components/general/SpinLoading";
-
-// import images
 import Banner from "@/public/images/auth/Banner.svg";
+import SignHeader from "@/components/auth/header/Header-sign";
+import SpinLoading from "@/components/general/SpinLoading";
 
 export default function Page() {
   const router = useRouter();
 
-  // Judge whether loaded
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
-  // Judge whether mobile view
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1024);
-  };
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -45,7 +36,10 @@ export default function Page() {
     };
   }, []);
 
-  // event Handlers
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
+
   const onClickLoginHandler = () => {
     console.log("Login clicked");
   };
@@ -56,7 +50,7 @@ export default function Page() {
         <>
           <Flex className="w-full lg:h-screen flex flex-col lg:flex-row">
             <Flex className="w-full lg:w-1/2 flex flex-col">
-              <Header />
+              <SignHeader />
               <Flex // Banner
                 vertical
                 justify="center"

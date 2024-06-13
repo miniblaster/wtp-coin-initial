@@ -1,38 +1,28 @@
 "use client";
-//import from react/next
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-// import from antd
 import { Flex, Typography, Button, Input } from "antd";
 
-// import from components
 import AuthHeader from "@/components/auth/header/Header-auth";
 import SpinLoading from "@/components/general/SpinLoading";
 
-// import images
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
 import ForgotPassword from "@/public/images/auth/ForgotPassword.svg";
-
-// import from other modules
 
 export default function Page() {
   const router = useRouter();
 
-  // Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
-  // Judge whether mobile view
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1024);
-  };
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -40,6 +30,10 @@ export default function Page() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
 
   return (
     <>

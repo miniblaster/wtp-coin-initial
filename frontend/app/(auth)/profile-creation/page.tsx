@@ -30,23 +30,20 @@ import EndIcon from "@/public/images/auth/end icon.svg";
 import Flag from "react-world-flags";
 import countryData from "iso-country-currency";
 import { getParamByParam } from "iso-country-currency";
-import { languages } from "countries-list";
 
 export default function Page() {
   const router = useRouter();
 
-  //Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [localCurrency, setLocalCurrency] = useState<string>("");
+  const [countryISOCode, setCountryISOCode] = useState<string>("");
+  const [countryList] = useState<any[]>(countryData.getAllISOCodes());
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
-  // Judge whether mobile view
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1024);
-  };
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -54,28 +51,6 @@ export default function Page() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // Handle countries, currencies, flags, languages
-  const [countryList, setCountryList] = useState<any[]>(
-    countryData.getAllISOCodes()
-  );
-  const [countryISOCode, setCountryISOCode] = useState<string>("");
-  const [localCurrency, setLocalCurrency] = useState<string>("");
-  // const [preferedLanguage, setPreferedLanguage] = useState<string>("");
-
-  const changeCountryHandler = (value: any) => {
-    setCountryISOCode(value);
-    setLocalCurrency(getParamByParam("countryName", value, "currency"));
-    console.log(value);
-  };
-  // const changeLanguageHandler = (value: any) => {
-  //   setPreferedLanguage(value);
-  //   console.log(value);
-  // };
-  const countryFilterOption = (input: string, option?: { value: string }) =>
-    (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
-  // const languageFilterOption = (input: string, option?: { value: string }) =>
-  //   (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
 
   useEffect(() => {
     countryList.sort((a: any, b: any) => {
@@ -89,7 +64,19 @@ export default function Page() {
     });
   });
 
-  // event handlers
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
+
+  const changeCountryHandler = (value: any) => {
+    setCountryISOCode(value);
+    setLocalCurrency(getParamByParam("countryName", value, "currency"));
+    console.log(value);
+  };
+
+  const countryFilterOption = (input: string, option?: { value: string }) =>
+    (option?.value ?? "").toLowerCase().includes(input.toLowerCase());
+
   const onClickNextHandler = () => {
     router.push("/input-otp/from-signup");
   };
@@ -212,45 +199,6 @@ export default function Page() {
                           ></Input>
                         </Flex>
                       </Flex>
-                      {/* <Flex vertical className="w-full gap-y-2">
-                        <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold">
-                          Prefered Language<span className="text-error">*</span>
-                        </Typography>
-                        <ConfigProvider
-                          theme={{
-                            components: {
-                              Select: {},
-                            },
-                            token: {
-                              controlHeight: isMobile ? 40 : 54,
-                              controlPaddingHorizontal: isMobile ? 14 : 14,
-                              fontSize: isMobile ? 12 : 14,
-                              lineHeight: isMobile ? 1.333 : 1.71,
-                            },
-                          }}
-                        >
-                          <Select
-                            showSearch
-                            onChange={changeLanguageHandler}
-                            placeholder="Select your language of preference"
-                            filterOption={languageFilterOption}
-                          >
-                            {Object.values(languages).map((language: any) => (
-                              <Select.Option
-                                key={language.name}
-                                value={language.name}
-                              >
-                                <Flex>
-                                  <Typography>
-                                    {language.name},&nbsp;&nbsp;&nbsp;&nbsp;
-                                    {language.native}
-                                  </Typography>
-                                </Flex>
-                              </Select.Option>
-                            ))}
-                          </Select>
-                        </ConfigProvider>
-                      </Flex> */}
                       <Flex vertical className="hidden lg:flex w-full gap-y-2">
                         <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold">
                           Short Title&nbsp;
