@@ -1,41 +1,33 @@
 "use client";
-//import from react/next
-import { useState, useEffect } from "react";
-import Image from "next/image";
+
 import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-// import from antd
 import { Flex, Typography, Button } from "antd";
 
-// import from components
+import classNames from "classnames";
+
+import WETPOTPInput from "@/components/auth/input/WETPOTPInput";
 import SpinLoading from "@/components/general/SpinLoading";
-import OTPInput from "@/components/auth/input/OTPInput";
 import AuthHeader from "@/components/auth/header/Header-auth";
 
-// import images
-import SendRequestIcon from "@/public/images/auth/SendRequest.svg";
 import OTPVerified from "@/public/images/auth/OTPVerified.svg";
+import SendRequestIcon from "@/public/images/auth/SendRequest.svg";
 import BackArrowIcon from "@/public/images/auth/arrow-ios-back-fill.svg";
-
-// import from other modules
-import classNames from "classnames";
 
 export default function Page() {
   const router = useRouter();
 
-  // Judge whether page loaded
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isVerified, setIsVerified] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
-  // Judge whether mobile view
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1024);
-  };
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -44,10 +36,10 @@ export default function Page() {
     };
   }, []);
 
-  // Judge whether success or failed
-  const [isVerified, setIsVerified] = useState<boolean>(false);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
 
-  // eventHandlers
   const onClickVerifyOTPHandler = () => {
     setIsVerified(true);
   };
@@ -96,7 +88,7 @@ export default function Page() {
               justify="center"
               className={classNames("w-full px-4", isVerified ? "hidden" : "")}
             >
-              <OTPInput />
+              <WETPOTPInput />
             </Flex>
             <Flex vertical className="w-full px-4 gap-y-6">
               <Flex vertical className="w-full gap-y-3">
