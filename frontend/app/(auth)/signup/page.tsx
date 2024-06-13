@@ -51,7 +51,7 @@ export default function Page() {
         <Flex className="w-full lg:h-screen flex flex-col lg:flex-row">
           <Flex className="w-full lg:w-1/2 flex flex-col">
             <SignHeader />
-            <Flex // Banner
+            <Flex
               vertical
               justify="center"
               align="center"
@@ -75,7 +75,7 @@ export default function Page() {
               />
             </Flex>
           </Flex>
-          <Flex // signup form
+          <Flex
             vertical
             align="center"
             className="px-4 lg:px-12 py-3 gap-y-8 lg:gap-y-14 w-full lg:w-1/2 lg:my-auto"
@@ -96,7 +96,7 @@ export default function Page() {
                 </Flex>
               </Flex>
               <Flex vertical className="w-full gap-y-5">
-                <ConfigProvider // mobile view
+                <ConfigProvider
                   theme={{
                     token: {
                       lineHeight: 1.333,

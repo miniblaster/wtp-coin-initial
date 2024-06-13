@@ -1,11 +1,9 @@
 "use client";
-// import from react/next
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-// import from antd
 import {
   Flex,
   Typography,
@@ -16,20 +14,15 @@ import {
   ConfigProvider,
 } from "antd";
 
-import { LoadingOutlined } from "@ant-design/icons";
-
-// import from components
-import AuthHeader from "@/components/auth/header/Header-auth";
 import SpinLoading from "@/components/general/SpinLoading";
+import AuthHeader from "@/components/auth/header/Header-auth";
 
-// import images
-import UploadPhoto from "@/public/images/auth/UploadPhoto.svg";
-import EndIcon from "@/public/images/auth/end icon.svg";
-
-// import from other modules
 import Flag from "react-world-flags";
 import countryData from "iso-country-currency";
 import { getParamByParam } from "iso-country-currency";
+
+import UploadPhoto from "@/public/images/auth/UploadPhoto.svg";
+import EndIcon from "@/public/images/auth/end icon.svg";
 
 export default function Page() {
   const router = useRouter();
@@ -93,11 +86,7 @@ export default function Page() {
             <AuthHeader />
             <Flex className="w-full flex flex-col">
               <Flex className="w-full flex flex-col lg:flex-row lg:px-16 lg:py-8 lg:gap-x-8 justify-between mb-4">
-                <Flex // left side
-                  vertical
-                  gap={16}
-                  className="hidden lg:flex w-[406px]"
-                >
+                <Flex vertical gap={16} className="hidden lg:flex w-[406px]">
                   <Typography className="text-[32px]/[48px] font-bold text-main">
                     Hello mrseneca!
                   </Typography>
@@ -106,11 +95,11 @@ export default function Page() {
                     your experience.
                   </Typography>
                 </Flex>
-                <Flex //right side
+                <Flex
                   justify="center"
                   className="flex flex-col lg:flex-row lg:flex-grow lg:border border-focus/[24%] rounded-[16px]"
                 >
-                  <Flex // Upload
+                  <Flex
                     vertical
                     className="flex justify-center lg:justify-start items-center w-full lg:w-1/3 lg:px-6 py-4 lg:py-6 gap-y-4 lg:gap-y-20 lg:bg-[#F9FAFB] lg:rounded-l-[16px]"
                   >
@@ -137,7 +126,7 @@ export default function Page() {
                       </Flex>
                     </Flex>
                   </Flex>
-                  <Flex // select form
+                  <Flex
                     vertical
                     align="center"
                     className="px-4 lg:px-6 py-3 lg:py-6 gap-y-8 lg:gap-y-14 w-full lg:w-2/3"
