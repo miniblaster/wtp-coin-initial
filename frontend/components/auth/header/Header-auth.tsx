@@ -1,16 +1,13 @@
-// import from react/next
 import Image from "next/image";
 
-// import from antd
 import { Flex, Typography } from "antd";
 
-// import images
 import Logomark from "@/public/images/auth/Logomark.svg";
 import SettingIcon from "@/public/images/auth/ic-settings.svg";
 
 export default function AuthHeader() {
   return (
-    <Flex // Header
+    <Flex
       align="center"
       className="w-full h-11 lg:h-[72px] flex justify-center lg:justify-between items-center lg:px-8 lg:shadow-md"
     >
