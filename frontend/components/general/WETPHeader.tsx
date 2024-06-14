@@ -8,7 +8,7 @@ import classNames from "classnames";
 import Logomark from "@/public/images/auth/Logomark.svg";
 import MyWalletIcon from "@/public/images/general/MyWalletIcon.svg";
 import LogoutIcon from "@/public/images/general/LogoutIcon.svg";
-import Avatar_001 from "@/public/images/avatar/001.svg";
+import Avatar_senesa from "@/public/images/avatar/senesa.svg";
 
 export default function WETPHeader() {
   const [activeTab, setActiveTab] = useState<string | null>("home");
@@ -16,7 +16,7 @@ export default function WETPHeader() {
   return (
     <Flex
       align="center"
-      className="w-full h-11 lg:h-[72px] flex justify-center lg:justify-between gap-x-14 items-center lg:px-8"
+      className="w-full h-11 lg:h-[72px] flex justify-center lg:justify-between gap-x-14 items-center lg:px-8 sticky top-0 bg-[white] z-10"
     >
       <Flex className="gap-x-[6.4px] lg:gap-x-[11.43px]">
         <Image
@@ -72,8 +72,8 @@ export default function WETPHeader() {
           </Button>
           <Button className="flex items-center px-[9.6px] gap-x-4 h-9 w-[132px] bg-main/[8%]">
             <Image
-              src={Avatar_001}
-              alt="Avatar_001"
+              src={Avatar_senesa}
+              alt="Avatar_senesa"
               className="w-[28.8px] h-auto"
             />
             <Flex className="flex items-center gap-x-1">
