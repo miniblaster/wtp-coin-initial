@@ -1,17 +1,12 @@
-// import from react/next
 import Image from "next/image";
 
-// import from antd
 import { Flex, Typography } from "antd";
 
-// import images
 import Logomark from "@/public/images/auth/Logomark.svg";
 
 export default function SignHeader() {
   return (
-    <Flex // Header
-      className="w-full h-11 lg:h-[72px] bg-main/[12%] flex justify-center lg:justify-start items-center"
-    >
+    <Flex className="w-full h-11 lg:h-[72px] bg-main/[12%] flex justify-center lg:justify-start items-center">
       <Image
         src={Logomark}
         alt="Logomark"
