@@ -114,7 +114,21 @@ export default function Page() {
                     <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
                       Claim your Username!
                     </Typography>
-                    <Input addonBefore="wetp.io/" placeholder="senesa.sage" />
+                    <ConfigProvider
+                      theme={{
+                        components: {
+                          Input: {
+                            paddingBlock: 11,
+                            paddingInline: 16,
+                            fontSize: 12,
+                            lineHeight: 1.333,
+                            addonBg: "#E3E2F6",
+                          },
+                        },
+                      }}
+                    >
+                      <Input addonBefore="wetp.io/" placeholder="senesa.sage" />
+                    </ConfigProvider>
                   </Flex>
                   <Flex vertical className="w-full gap-y-2">
                     <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">

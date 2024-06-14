@@ -20,6 +20,7 @@ const config: Config = {
       secondary: "#637381",
       error: "#CB1E1E",
       focus: "#919EAB",
+      lighter: "#E3E2F6",
     },
   },
   plugins: [],

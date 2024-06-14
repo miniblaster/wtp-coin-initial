@@ -119,10 +119,24 @@ export default function Page() {
                           (Optional)
                         </span>
                       </Typography>
-                      <Input
-                        addonBefore="wetp.com/"
-                        placeholder="senesa.sage"
-                      />
+                      <ConfigProvider
+                        theme={{
+                          components: {
+                            Input: {
+                              paddingBlock: 11,
+                              paddingInline: 16,
+                              fontSize: 12,
+                              lineHeight: 1.333,
+                              addonBg: "#E3E2F6",
+                            },
+                          },
+                        }}
+                      >
+                        <Input
+                          addonBefore="wetp.com/"
+                          placeholder="senesa.sage"
+                        />
+                      </ConfigProvider>
                     </Flex>
                     <Flex vertical className="w-full gap-y-2 lg:gap-y-3">
                       <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
