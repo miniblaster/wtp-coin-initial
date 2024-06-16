@@ -1,5 +1,11 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return <>First Page</>;
+import { useState } from "react";
+
+import classNames from "classnames";
+
+import WETPHeader from "@/components/general/WETPHeader";
+
+export default function Page() {
+  return <WETPHeader />;
 }

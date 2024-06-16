@@ -1,37 +1,33 @@
 "use client";
-// import from react/next
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 
-// import from antd
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import {
   Flex,
   Typography,
-  Spin,
   Input,
   Checkbox,
   Button,
   ConfigProvider,
 } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 
-// import images
-import Logomark from "@/public/images/auth/Logomark.svg";
 import Banner from "@/public/images/auth/Banner.svg";
+import SpinLoading from "@/components/general/SpinLoading";
+import SignHeader from "@/components/auth/header/Header-sign";
 
 export default function Page() {
-  // Judge whether loaded
+  const router = useRouter();
+
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
   useEffect(() => {
     setTimeout(() => setLoaded(true), 1);
   }, []);
 
-  // Judge whether mobile view
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1024);
-  };
   useEffect(() => {
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -40,25 +36,22 @@ export default function Page() {
     };
   }, []);
 
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1024);
+  };
+
+  const onClickLoginHandler = () => {
+    console.log("Login clicked");
+  };
+
   return (
     <>
       {loaded ? (
         <>
           <Flex className="w-full lg:h-screen flex flex-col lg:flex-row">
             <Flex className="w-full lg:w-1/2 flex flex-col">
-              <Flex // Header
-                className="w-full h-11 lg:h-[72px] bg-main/[12%] flex justify-center lg:justify-start items-center"
-              >
-                <Image
-                  src={Logomark}
-                  alt="Logomark"
-                  className="w-[25.6px] lg:w-10 h-auto mr-[6.4px] lg:ml-8"
-                />
-                <Typography className="text-[14.4px]/[27.43px] lg:text-[22.86px]/[34.29px] font-bold text-main">
-                  WeThePeople
-                </Typography>
-              </Flex>
-              <Flex // Banner
+              <SignHeader />
+              <Flex
                 vertical
                 justify="center"
                 align="center"
@@ -93,7 +86,7 @@ export default function Page() {
                 </Flex>
               </Flex>
             </Flex>
-            <Flex // signup form
+            <Flex
               vertical
               align="center"
               className="px-4 lg:px-12 py-3 gap-y-8 lg:gap-y-14 w-full lg:w-1/2 lg:my-auto"
@@ -105,7 +98,7 @@ export default function Page() {
                   </Typography>
                 </Flex>
                 <Flex vertical className="w-full gap-y-5">
-                  <ConfigProvider // mobile view
+                  <ConfigProvider
                     theme={{
                       token: {
                         lineHeight: 1.333,
@@ -126,10 +119,24 @@ export default function Page() {
                           (Optional)
                         </span>
                       </Typography>
-                      <Input
-                        addonBefore="wetp.com/"
-                        placeholder="senesa.sage"
-                      />
+                      <ConfigProvider
+                        theme={{
+                          components: {
+                            Input: {
+                              paddingBlock: 11,
+                              paddingInline: 16,
+                              fontSize: 12,
+                              lineHeight: 1.333,
+                              addonBg: "#E3E2F6",
+                            },
+                          },
+                        }}
+                      >
+                        <Input
+                          addonBefore="wetp.com/"
+                          placeholder="senesa.sage"
+                        />
+                      </ConfigProvider>
                     </Flex>
                     <Flex vertical className="w-full gap-y-2 lg:gap-y-3">
                       <Typography className="text-xs lg:text-[14px]/[22px] font-semibold">
@@ -137,14 +144,22 @@ export default function Page() {
                       </Typography>
                       <Input.Password placeholder="Enter password" />
                     </Flex>
-                    <Typography className="text-[12px]/[20px] font-medium text-main text-center">
+                    <Typography
+                      onClick={() => {
+                        router.push("/forgot-password");
+                      }}
+                      className="text-[12px]/[20px] font-medium text-main text-center"
+                    >
                       Forgot Password?
                     </Typography>
                   </ConfigProvider>
                 </Flex>
               </Flex>
               <Flex vertical className="w-full gap-y-6">
-                <Button className="text-[white] font-bold py-[11px] bg-main h-fit text-[15px]/[26px]">
+                <Button
+                  onClick={onClickLoginHandler}
+                  className="text-[white] font-bold py-[11px] bg-main h-fit text-[15px]/[26px]"
+                >
                   Login
                 </Button>
                 <Flex justify="center" className="w-full gap-x-1">
@@ -152,7 +167,7 @@ export default function Page() {
                     Don&apos;t have an account?
                   </Typography>
                   <Link
-                    href="#"
+                    href="/signup"
                     className="text-main text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold"
                   >
                     Sign Up
@@ -179,9 +194,7 @@ export default function Page() {
           </Flex>
         </>
       ) : (
-        <Flex justify="center" align="center" className="w-screen h-screen">
-          <Spin indicator={<LoadingOutlined className="text-[100px]" />} />
-        </Flex>
+        <SpinLoading />
       )}
     </>
   );
