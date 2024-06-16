@@ -13,7 +13,10 @@ export default function WETPFooter() {
   const [activeTab, setActiveTab] = useState<string>("home");
 
   return (
-    <Flex align="center" className="w-full bottom-0 bg-[white] sticky z-10">
+    <Flex
+      align="center"
+      className="w-full bottom-0 bg-[white] sticky z-10 lg:hidden"
+    >
       <Flex
         onClick={() => setActiveTab("home")}
         className="w-1/4 flex flex-col justify-center items-center py-2 gap-y-1"
