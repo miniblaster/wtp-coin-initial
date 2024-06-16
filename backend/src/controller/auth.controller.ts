@@ -22,3 +22,6 @@ export const getUserByUsername = async (username: string) => {
     console.error("Error registering user:", error);
   }
 };
+
+export const loginWithEmailAndPassword = async (email: string, password: string) => {
+}

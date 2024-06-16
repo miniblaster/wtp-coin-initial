@@ -1,6 +1,12 @@
 import express, { Router, Request, Response } from "express";
 import httpStatus from "http-status";
-import { getUserByEmail, createUser, getUserByUsername } from "../controller/auth.controller";
+import bcrypt from "bcrypt";
+import {
+  getUserByEmail,
+  createUser,
+  getUserByUsername,
+  loginWithEmailAndPassword,
+} from "../controller/auth.controller";
 
 const router: Router = express.Router();
 
@@ -16,17 +22,22 @@ router.post("/register", async (req: Request, res: Response) => {
     } else if (username && (await getUserByUsername(username))) {
       return res.status(httpStatus.CONFLICT).send({ error: "Username already exists" });
     }
-    const _user = await createUser({ name, username, email, password, country, currency });
+
+    const saltRounds = 10; // Number of salt rounds for hashing
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    console.log("hashed: ", hashedPassword);
+
+    const _user = await createUser({ name, username, email, password: hashedPassword, country, currency });
     if (_user) {
       console.log("Created user: ", _user);
       return res.status(httpStatus.CREATED).send({ newUser: _user });
     } else {
       console.log("Error in creating user");
-      return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: "An error occurred while creating the user" });
+      return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: "Error occurred while creating the user" });
     }
   } catch (error) {
     console.error("Error in creating user: ", error);
-    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: "An error occurred while creating the user" });
+    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: "Error occurred while creating the user" });
   }
 });
 
@@ -35,18 +46,22 @@ router.post("/register-validation", async (req: Request, res: Response) => {
   try {
     if (!email) {
       return res.status(httpStatus.BAD_REQUEST).send({ error: "Email is required" });
-    } else if (!username) {
-      return res.status(httpStatus.BAD_REQUEST).send({ error: "Username is required" });
-    } else if (email && (await getUserByEmail(email))) {
-      return res.status(httpStatus.CONFLICT).send({ error: "Email already exists" });
-    } else if (username && (await getUserByUsername(username))) {
-      return res.status(httpStatus.CONFLICT).send({ error: "Username already exists" });
-    } else {
-      return res.status(httpStatus.OK).send({ error: "Valid register input" });
     }
+    if (!username) {
+      return res.status(httpStatus.BAD_REQUEST).send({ error: "Username is required" });
+    }
+    if (email && (await getUserByEmail(email))) {
+      return res.status(httpStatus.CONFLICT).send({ error: "Email already exists" });
+    }
+    if (username && (await getUserByUsername(username))) {
+      return res.status(httpStatus.CONFLICT).send({ error: "Username already exists" });
+    }
+    return res.status(httpStatus.OK).send({ error: "Valid register input" });
   } catch (error) {
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: "Error occurred while validating register inputs." });
     console.error("Error in validating register inputs: ", error);
+    return res
+      .status(httpStatus.INTERNAL_SERVER_ERROR)
+      .send({ error: "Error occurred while validating register inputs." });
   }
 });
 
@@ -54,9 +69,16 @@ router.post("/login", async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const _user = await getUserByEmail(email);
+    if (!_user) {
+      return res.status(httpStatus.NOT_FOUND).send({ message: "Email does not exists" });
+    }
+    const passwordMatch = await bcrypt.compare(password, _user.password.trim());
+    if (!passwordMatch) {
+      return res.status(httpStatus.NOT_FOUND).send({ message: "Password does not match" });
+    }
     return res.status(httpStatus.OK).send({ user: _user });
   } catch {
-    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ message: "Internal server error" });
+    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ message: "Internal server error while logging in" });
   }
 });
 
