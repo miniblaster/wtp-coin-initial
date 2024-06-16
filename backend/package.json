@@ -1,0 +1,28 @@
+{
+  "name": "Backend for WTP Coin Project",
+  "version": "1.0.0",
+  "description": "Backend for WTP Coin Project",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development npx ts-node-dev --respawn --transpile-only --exit-child -r tsconfig-paths/register src/index.ts",
+    "start": "npx ts-node-dev --respawn --transpile-only --exit-child -r tsconfig-paths/register src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "trmvenus",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-status": "^1.7.4",
+    "mongoose": "^8.4.1",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "typescript": "^5.4.5"
+  }
+}
