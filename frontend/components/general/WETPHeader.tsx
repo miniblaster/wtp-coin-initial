@@ -16,7 +16,7 @@ export default function WETPHeader() {
   return (
     <Flex
       align="center"
-      className="w-full h-11 lg:h-[72px] flex justify-center gap-x-14 items-center lg:px-8 sticky top-0 bg-[white] z-10"
+      className="w-full h-11 lg:h-[72px] flex justify-center gap-x-14 items-center lg:px-8 fixed top-0 bg-[white] z-10"
     >
       <Flex className="gap-x-[6.4px] lg:gap-x-[11.43px]">
         <Image
