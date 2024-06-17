@@ -13,6 +13,30 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      // scrollbar: {
+      //   DEFAULT: {
+      //     // Configure your default scrollbar styles here
+      //     bg: "transparent",
+      //     hover: {
+      //       bg: "rgba(0,0,0,0.5)",
+      //     },
+      //     active: {
+      //       bg: "rgba(0,0,0,0.75)",
+      //     },
+      //   },
+      //   // You can create more variants if needed
+      //   thick: {
+      //     bg: "transparent",
+      //     borderRadius: "8px",
+      //     width: "12px",
+      //     hover: {
+      //       bg: "rgba(0,0,0,0.5)",
+      //     },
+      //     active: {
+      //       bg: "rgba(0,0,0,0.75)",
+      //     },
+      //   },
+      // },
     },
     colors: {
       main: "#443CC5",
@@ -26,7 +50,7 @@ const config: Config = {
       success: "#17714A",
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
   corePlugins: {
     // preflight: false,
   },

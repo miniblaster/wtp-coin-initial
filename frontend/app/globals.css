@@ -28,16 +28,8 @@
     -webkit-text-fill-color: #555555 !important;
   }
 
-  /* .ant-input-group-addon {
-    background-color: #E3E2F6 !important;
-  } */
 
-  /* .ant-typography {
-    color: #212B36 !important
-  } */
-  /* .ant-select-selector {
-    padding: 12px 14px !important;
-  } */
+
 }
 
 @media (prefers-color-scheme: dark) {
