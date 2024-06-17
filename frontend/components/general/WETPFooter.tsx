@@ -15,7 +15,7 @@ export default function WETPFooter() {
   return (
     <Flex
       align="center"
-      className="w-full bottom-0 bg-[white] sticky z-10 lg:hidden"
+      className="w-full fixed bottom-0 bg-[white] z-10 lg:hidden"
     >
       <Flex
         onClick={() => setActiveTab("home")}
