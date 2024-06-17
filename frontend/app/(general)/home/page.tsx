@@ -50,10 +50,10 @@ export default function Page() {
       {loading ? (
         <SpinLoading />
       ) : (
-        <Flex vertical className="w-screen lg:w-full flex">
+        <Flex vertical className="w-screen lg:w-full">
           <WETPHeader />
           <Flex // content
-            className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10 mb-[60px] lg:mb-0"
+            className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10 mt-11 lg:mt-[72px] mb-[60px] lg:mb-0"
           >
             <Flex // top
               className="w-full flex flex-col lg:flex-row lg:gap-x-10"

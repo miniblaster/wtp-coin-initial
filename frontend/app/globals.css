@@ -28,7 +28,26 @@
     -webkit-text-fill-color: #555555 !important;
   }
 
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 200px;
+  }
 
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* You can change this to your preferred color */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    /* You can change this to your preferred color */
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* You can change this to your preferred color */
+  }
 
 }
 
