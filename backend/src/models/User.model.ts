@@ -15,7 +15,7 @@ const UserSchema: Schema = new Schema(
     expertise: [{ type: String }],
     skills: [{ type: String }],
     photo: { type: String },
-    is_public: { type: Boolean },
+    isPublic: { type: Boolean, default: true },
   },
   { timestamps: true }
 );

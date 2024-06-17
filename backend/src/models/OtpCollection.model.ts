@@ -5,8 +5,8 @@ const OTPSchema: Schema = new Schema(
   {
     email: { type: String, ref: "User", required: true },
     otp: { type: String },
-    purpose: { type: Boolean },
-    expires_at: { type: Date },
+    purpose: { type: String, enum: ["REGISTER", "FORGOT"] },
+    expiresAt: { type: Date },
   },
   { timestamps: true }
 );

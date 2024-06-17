@@ -1,10 +1,10 @@
 export type TransactionType = {
-  transaction_no: number;
-  account_id: number;
+  transactionNo: number;
+  accountId: number;
   type: string;
-  participant_id: number;
+  participantId: number;
   currency: boolean;
-  real_amount: number;
-  weth_amount: number;
+  realAmount: number;
+  wethAmount: number;
   date: Date;
-}
+};
