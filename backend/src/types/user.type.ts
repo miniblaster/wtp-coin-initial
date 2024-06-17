@@ -10,5 +10,5 @@ export type UserType = {
   expertise?: string[];
   skills?: string[];
   photo?: string;
-  is_public?: boolean;
+  isPublic?: boolean;
 };

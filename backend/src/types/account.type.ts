@@ -1,6 +1,6 @@
 export type AccountType = {
-  user_id: number;
-  weth_balance: number;
+  userId: number;
+  wethBalance: number;
   hasMetamask: boolean;
   hasRabby: boolean;
 }

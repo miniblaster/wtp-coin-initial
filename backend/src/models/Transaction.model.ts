@@ -3,13 +3,13 @@ import { TransactionType } from "src/types/transaction.type";
 
 const TransactionSchema: Schema = new Schema(
   {
-    transaction_no: { type: Number },
-    account_id: { type: Number, ref: "Account", required: true },
+    transactionNo: { type: Number },
+    accountId: { type: Number, ref: "Account", required: true },
     type: { type: String, enum: ["Send", "Receive", "Buy"] },
-    participant_id: { type: Number, ref: "Account", required: true },
+    participantId: { type: Number, ref: "Account", required: true },
     currency: { type: Boolean },
-    real_amount: { type: Number },
-    weth_amount: { type: Number },
+    realAmount: { type: Number },
+    wethAmount: { type: Number },
     date: { type: Date },
   },
   { timestamps: true }

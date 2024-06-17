@@ -1,6 +1,6 @@
 import express, { Router } from 'express';
 import authRouter from './auth.router';
-// import otpRouter from './otp.router';
+import otpRouter from './otp.router';
 // import adminRouter from './admin.router';
 // import transactionRouter from './transaction.router';
 // import notesRouter from './notes.router';
@@ -19,10 +19,10 @@ const defaultIRoute: IRoute[] = [
       path: '/auth',
       route: authRouter,
     },
-    // {
-    //   path: '/otp',
-    //   route: otpRouter,
-    // },
+    {
+      path: '/otp',
+      route: otpRouter,
+    },
     // {
     //   path: '/admin',
     //   route: adminRouter,
