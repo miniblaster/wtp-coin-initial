@@ -53,7 +53,7 @@ export default function Page() {
         <Flex vertical className="w-screen lg:w-full flex">
           <WETPHeader />
           <Flex // content
-            className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10"
+            className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10 mb-[60px] lg:mb-0"
           >
             <Flex // top
               className="w-full flex flex-col lg:flex-row lg:gap-x-10"
