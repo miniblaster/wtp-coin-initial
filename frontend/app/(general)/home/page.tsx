@@ -213,7 +213,7 @@ export default function Page() {
                     >
                       <Flex className="flex items-center justify-between p-[6px] lg:p-0 w-full">
                         <Flex className="gap-x-2">
-                          <Flex className="bg-lighter px-[6px] rounded-full">
+                          <Flex className="bg-lighter px-[6px] rounded-full w-8 lg:w-14">
                             <SendIconSVG
                               color="#36309E"
                               width={isMobile ? "32px" : "56px"}
