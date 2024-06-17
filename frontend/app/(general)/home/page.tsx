@@ -53,7 +53,7 @@ export default function Page() {
         <Flex vertical className="w-screen lg:w-full flex">
           <WETPHeader />
           <Flex // content
-            className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10"
+            className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10 mt-11 lg:mt-[72px] mb-[60px] lg:mb-0 overflow-hidden"
           >
             <Flex // top
               className="w-full flex flex-col lg:flex-row lg:gap-x-10"
@@ -213,7 +213,7 @@ export default function Page() {
                     >
                       <Flex className="flex items-center justify-between p-[6px] lg:p-0 w-full">
                         <Flex className="gap-x-2">
-                          <Flex className="bg-lighter px-[6px] rounded-full w-8 lg:w-14">
+                          <Flex className="bg-lighter px-[6px] rounded-full w-8 lg:w-14 items-center">
                             <SendIconSVG
                               color="#36309E"
                               width={isMobile ? "32px" : "56px"}
