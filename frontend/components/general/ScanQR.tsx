@@ -11,13 +11,11 @@ import ShareQRIcon from "@/public/images/general/home/ShareQRIcon.svg";
 import QRLargeIllustration from "@/public/images/general/home/QR-large.svg";
 
 interface IScanQRProps {
-  isScanQROpen?: boolean | undefined;
+  isScanQROpen?: boolean;
   setIsScanQROpen?: any;
 }
 
 export default function ScanQR({ isScanQROpen, setIsScanQROpen }: IScanQRProps) {
-  // const [isScanQROpen, setIsScanQROpen] = useState<boolean>(false);
-
   const handleOk = () => {
     setIsScanQROpen(false);
   };
@@ -29,14 +27,14 @@ export default function ScanQR({ isScanQROpen, setIsScanQROpen }: IScanQRProps) 
   return (
     <>
       <Modal
-        className="flex-col w-screen px-[8px]"
+        className="flex-col w-full px-[8px]"
         title="Scan to receive payment."
         open={isScanQROpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
           <Button
-            key={"OK"}
+            key={"SendQR"}
             onClick={handleOk}
             className="flex justify-center items-center w-full gap-x-2 h-12 bg-main"
           >
@@ -51,10 +49,6 @@ export default function ScanQR({ isScanQROpen, setIsScanQROpen }: IScanQRProps) 
             <Typography className="text-[14px]/[20px] font-medium">username: sage.seneca</Typography>
             <ContentCopySVG color="black" />
           </Flex>
-          {/* <Button className="flex justify-center items-center w-full gap-x-2 h-12 bg-main">
-            <Image src={ShareQRIcon} alt="ShareQRIcon" className="w-5 h-auto" />
-            <Typography className="text-[14px]/[16px] font-bold text-[white]">Share QR</Typography>
-          </Button> */}
         </Flex>
       </Modal>
     </>

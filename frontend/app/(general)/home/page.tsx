@@ -117,7 +117,6 @@ export default function Page() {
                         className="h-9 w-9 lg:h-12 lg:w-12 px-2 flex items-center justify-center bg-main"
                       >
                         <Image src={MiniQRIcon} alt="MiniQRIcon" className="w-5 lg:w-7 h-auto" />
-                        <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} />
                       </Button>
                     </Flex>
                   </Flex>
@@ -270,7 +269,7 @@ export default function Page() {
           <WETPFooter />
         </Flex>
       )}
-      {/* <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} /> */}
+      <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} />
     </>
   );
 }
