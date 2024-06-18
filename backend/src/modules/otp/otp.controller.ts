@@ -12,32 +12,33 @@ import { random } from "../utils";
 export const sendEmailOtp = async (req: Request, res: Response) => {
   try {
     const { email, purpose } = req.body;
-    // Validation: email provided or not
+
     if (!email) {
-      return res.status(400).json({ error: "Email is required." });
+      return res.status(httpStatus.BAD_REQUEST).json({ error: "Email is required." });
     }
-    // Validation: email format valid or not
+
     const _emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!_emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format." });
+      return res.status(httpStatus.BAD_REQUEST).json({ error: "Invalid email format." });
     }
+
     const _user = await getUserByEmail(email);
-    if (!_user) {
-      throw new Error("User doesnt exist");
+    if (purpose === "FORGOT" && !_user) {
+      return res.status(httpStatus.NOT_FOUND).json({ error: "User doesn't exists." });
     }
+    if (purpose === "REGISTER" && !!_user) {
+      return res.status(httpStatus.CONFLICT).json({ error: "User already exists." });
+    }
+
     const _otp = random(100000, 999999);
     const _otpObj = await addEmailOtpToDatabase(email, _otp, purpose);
     console.log("OtpObj: ", _otpObj);
+
     await sendEmailOtpToDatabase(email, _otp);
+
     return res.sendStatus(httpStatus.OK);
   } catch (error: any) {
-    if (error.message === "User doesnt exist") {
-      return res.status(httpStatus.NOT_FOUND).json({ error: "User doesnot exist" });
-    }
-    if (error.message === "User not found") {
-      return res.status(httpStatus.NOT_FOUND).json({ error: "User not found" });
-    }
-    console.error("Error Sending OTP:", error);
+    console.error("Error in sending otp to email: ", error);
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ message: "Internal server error" });
   }
 };
@@ -47,12 +48,12 @@ export const verifyEmailOtpToForgotPassword = async (req: Request, res: Response
     const { email, otp, password, purpose } = req.body;
     // Validation: email provided or not
     if (!email) {
-      return res.status(400).json({ error: "Email is required." });
+      return res.status(httpStatus.BAD_REQUEST).json({ error: "Email is required." });
     }
     // Validation: email format valid or not
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format." });
+      return res.status(httpStatus.BAD_REQUEST).json({ error: "Invalid email format." });
     }
     const { error } = await verifyOTPWithDatabase(email, otp, purpose);
     if (error) {

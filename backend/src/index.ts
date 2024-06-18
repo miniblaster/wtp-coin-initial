@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api", router);
 app.use("/", (_req, res) => {
-  res.send(`Working! on master`);
+  res.send(`Working on WTP!`);
 });
 
 connectToDatabase()

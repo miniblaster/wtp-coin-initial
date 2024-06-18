@@ -27,22 +27,11 @@ export const sendEmailOtpToDatabase = async (email: string, otp: number) => {
     const user = await authService.getUserByEmail(email);
     const name = user?.name;
     const subject = "Your WETP Password Reset Code";
-    const text = `Hello ${name},
-    You're on your way to resetting your password for WETP. To ensure your account's security, we've sent you a One-Time Password (OTP) that you'll need to enter on the password reset page.
-
-    Here is your OTP: ${otp}.
-
-    If you did not request a password reset, please ignore this email, but it may also be wise to change your password if you suspect someone else has attempted to access your account.
-    If you encounter any issues or need further assistance, our support team is here for you at support@wetp.io.
-    Thank you for taking steps to secure your account.
-
-    Best regards,
-    The WETP Team`;
 
     const htmlFilePath = path.join(__dirname, "../email/forgot_password.html");
     const htmlTemplate = fs.readFileSync(htmlFilePath, "utf8");
     const html = htmlTemplate.replace("{{name}}", name || "").replace("{{otp}}", otp.toString());
-    await emailService.sendEmail(email, subject, text, html);
+    await emailService.sendEmail(email, subject, "", html);
   } catch (error) {
     throw error;
   }

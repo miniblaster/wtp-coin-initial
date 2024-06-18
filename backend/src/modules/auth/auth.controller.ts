@@ -2,9 +2,10 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import { getUserByEmail, createUser, getUserByUsername, loginWithEmailAndPassword } from "./auth.service";
+import { verifyOTPWithDatabase } from "../otp/otp.service";
 
 export const register = async (req: Request, res: Response) => {
-  const { name, username, email, password, country, currency, title, bio, isPublic } = req.body;
+  const { name, username, email, password, country, currency, title, bio, isPublic, otp } = req.body;
   try {
     if (!name || !username || !email || !country) {
       return res.status(httpStatus.BAD_REQUEST).json({ error: "Name or Username or Email or Country is missing" });
@@ -12,6 +13,11 @@ export const register = async (req: Request, res: Response) => {
       return res.status(httpStatus.CONFLICT).json({ error: "Email already exists" });
     } else if (username && (await getUserByUsername(username))) {
       return res.status(httpStatus.CONFLICT).json({ error: "Username already exists" });
+    }
+
+    const { isVerified } = await verifyOTPWithDatabase(email, otp, "REGISTER");
+    if (!isVerified) {
+      return res.status(httpStatus.NOT_ACCEPTABLE).json({ error: "OTP entered is wrong" });
     }
 
     const saltRounds = 10; // Number of salt rounds for hashing

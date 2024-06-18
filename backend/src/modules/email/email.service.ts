@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import config from "../../config/config";
 
-interface Message {
+interface IMessage {
   from: string;
   to: string;
   subject: string;
@@ -13,7 +13,7 @@ const transport = nodemailer.createTransport(config.email.smtp);
 
 export const sendEmail = async (to: string, subject: string, text: string, html: string): Promise<void> => {
   try {
-    const msg: Message = {
+    const msg: IMessage = {
       from: config.email.from,
       to,
       subject,
