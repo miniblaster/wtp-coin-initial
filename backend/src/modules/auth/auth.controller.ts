@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import { getUserByEmail, createUser, getUserByUsername, loginWithEmailAndPassword } from "./auth.service";
-import { verifyOTPWithDatabase } from "../otp/otp.service";
+import { deleteOTPFromDatabase, verifyOTPWithDatabase } from "../otp/otp.service";
 
 export const register = async (req: Request, res: Response) => {
   const { name, username, email, password, country, currency, title, bio, isPublic, otp } = req.body;
@@ -19,6 +19,8 @@ export const register = async (req: Request, res: Response) => {
     if (!isVerified) {
       return res.status(httpStatus.NOT_ACCEPTABLE).json({ error: "OTP entered is wrong" });
     }
+
+    await deleteOTPFromDatabase(email, otp, "REGISTER");
 
     const saltRounds = 10; // Number of salt rounds for hashing
     const hashedPassword = await bcrypt.hash(password, saltRounds);

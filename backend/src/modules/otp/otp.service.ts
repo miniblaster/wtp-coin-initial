@@ -32,6 +32,8 @@ export const sendEmailOtpToDatabase = async (email: string, otp: number) => {
     const htmlTemplate = fs.readFileSync(htmlFilePath, "utf8");
     const html = htmlTemplate.replace("{{name}}", name || "").replace("{{otp}}", otp.toString());
     await emailService.sendEmail(email, subject, "", html);
+
+    return;
   } catch (error) {
     throw error;
   }
@@ -39,43 +41,24 @@ export const sendEmailOtpToDatabase = async (email: string, otp: number) => {
 
 export const verifyOTPWithDatabase = async (email: string, otp: number, purpose: string) => {
   try {
-    const validOtp = await OTPModel.findOne({
-      email,
-      otp,
-      purpose,
-      expiresAt: { $gt: new Date() },
-    });
+    const validOtp = await OTPModel.findOne({ email, otp, purpose, expiresAt: { $gt: new Date() } });
     if (!validOtp) {
       return { isVerified: false, error: "OTP Validation Failed" };
     }
     return { isVerified: true };
   } catch (error) {
-    throw new Error("OTP verification failed");
+    throw error;
   }
 };
 
 export const deleteOTPFromDatabase = async (email: string, otp: number, purpose: string) => {
   try {
-    console.log(email, otp, purpose);
-    // const verifyOTPQuery = `
-    // SELECT * FROM otp_collection
-    // WHERE email = $1 AND otp = $2 AND purpose = $3 AND expires_at > NOW()`;
-    // const result = await dbClient.query(verifyOTPQuery, [email, otp, purpose]);
-    // console.log(result.rows);
-    // if (result.rows.length === 0) {
-    //   throw new Error("OTP not found or expired");
-    // }
-
-    // const deleteOTPQuery = `
-    //   DELETE FROM otp_collection
-    //   WHERE email = $1 AND otp = $2 AND purpose = $3`;
-    // const { rows } = await dbClient.query(deleteOTPQuery, [email, otp, purpose]);
-    // console.log("OTP deleted", rows);
-    // return { message: "Deleted" };
-  } catch (error: any) {
-    if (error.message.includes("OTP not found or expired")) {
-      throw error;
+    const _deletedOtp = await OTPModel.findOneAndDelete({ email, otp, purpose });
+    if (!_deletedOtp) {
+      throw new Error("OTP not found");
     }
-    throw new Error("OTP Deletion failed");
+    return _deletedOtp;
+  } catch (error: any) {
+    throw error;
   }
 };
