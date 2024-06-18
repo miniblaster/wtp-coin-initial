@@ -24,10 +24,12 @@ import CompareArrow from "@/public/images/general/CompareArrow.svg";
 import MetaMaskIcon from "@/public/images/general/home/MetaMaskIcon.svg";
 import HomeBannerIcon from "@/public/images/general/home/HomeBanner.svg";
 import InviteIllustration from "@/public/images/general/InviteIllustration.svg";
+import ScanQR from "@/components/general/ScanQR";
 
 export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const [isScanQROpen, setIsScanQROpen] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1);
@@ -108,7 +110,12 @@ export default function Page() {
                           </Typography>
                         </Button>
                       </Flex>
-                      <Button className="h-9 w-9 lg:h-12 lg:w-12 px-2 flex items-center justify-center bg-main">
+                      <Button
+                        onClick={() => {
+                          setIsScanQROpen(!isScanQROpen);
+                        }}
+                        className="h-9 w-9 lg:h-12 lg:w-12 px-2 flex items-center justify-center bg-main"
+                      >
                         <Image src={MiniQRIcon} alt="MiniQRIcon" className="w-5 lg:w-7 h-auto" />
                       </Button>
                     </Flex>
@@ -262,6 +269,7 @@ export default function Page() {
           <WETPFooter />
         </Flex>
       )}
+      <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} />
     </>
   );
 }
