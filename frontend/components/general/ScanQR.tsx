@@ -27,7 +27,7 @@ export default function ScanQR({ isScanQROpen, setIsScanQROpen }: IScanQRProps) 
   return (
     <>
       <Modal
-        className="flex-col w-full px-[8px]"
+        className="flex-col w-full px-[8px] lg:max-w-[440px]"
         title="Scan to receive payment."
         open={isScanQROpen}
         onOk={handleOk}
@@ -44,7 +44,7 @@ export default function ScanQR({ isScanQROpen, setIsScanQROpen }: IScanQRProps) 
         ]}
       >
         <Flex className="flex-col justify-center items-center w-full px-3 py-4 gap-y-6">
-          <Image src={QRLargeIllustration} alt="QRLargeIllustration" className="w-[286px] h-auto" />
+          <Image src={QRLargeIllustration} alt="QRLargeIllustration" className="w-[286px] lg:w-[392px] h-auto" />
           <Flex className="justify-center items-center w-full gap-x-2">
             <Typography className="text-[14px]/[20px] font-medium">username: sage.seneca</Typography>
             <ContentCopySVG color="black" />
