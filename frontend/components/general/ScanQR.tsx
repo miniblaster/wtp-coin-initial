@@ -28,19 +28,17 @@ export default function ScanQR({ isScanQROpen, setIsScanQROpen }: IScanQRProps) 
     <>
       <Modal
         className="flex-col w-full px-[8px] lg:max-w-[440px]"
-        title="Scan to receive payment."
+        title={<Typography className="p-3 text-[14px]/[22px] font-semibold">Scan to receive payment.</Typography>}
         open={isScanQROpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
-          <Button
-            key={"SendQR"}
-            onClick={handleOk}
-            className="flex justify-center items-center w-full gap-x-2 h-12 bg-main"
-          >
-            <Image src={ShareQRIcon} alt="ShareQRIcon" className="w-5 h-auto" />
-            <Typography className="text-[14px]/[16px] font-bold text-[white]">Share QR</Typography>
-          </Button>,
+          <Flex key={"SendQR"} className="px-3 pb-4">
+            <Button onClick={handleOk} className="flex justify-center items-center w-full gap-x-2 h-12 bg-main">
+              <Image src={ShareQRIcon} alt="ShareQRIcon" className="w-5 h-auto" />
+              <Typography className="text-[14px]/[16px] font-bold text-[white]">Share QR</Typography>
+            </Button>
+          </Flex>,
         ]}
       >
         <Flex className="flex-col justify-center items-center w-full px-3 py-4 gap-y-6">
