@@ -31,7 +31,9 @@ export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isScanQROpen, setIsScanQROpen] = useState<boolean>(false);
-  const [isSendPaymentOpen, setIsSendPaymentOpen] = useState(false);
+  const [isPaymentSent, setIsPaymentSent] = useState<boolean>(false);
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState<boolean>(false);
+  const [isSendPaymentOpen, setIsSendPaymentOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1);
@@ -279,7 +281,14 @@ export default function Page() {
         </Flex>
       )}
       <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} />
-      <SendPayment isSendPaymentOpen={isSendPaymentOpen} setIsSendPaymentOpen={setIsSendPaymentOpen} />
+      <SendPayment
+        isSendPaymentOpen={isSendPaymentOpen}
+        setIsSendPaymentOpen={setIsSendPaymentOpen}
+        setIsPaymentSent={setIsPaymentSent}
+        isPaymentSent={isPaymentSent}
+        setIsPaymentSuccess={setIsPaymentSuccess}
+        isPaymentSuccess={isPaymentSuccess}
+      />
     </>
   );
 }
