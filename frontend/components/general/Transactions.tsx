@@ -10,25 +10,45 @@ import ReceiveIconSVG from "../svg/ReceiveIconSVG";
 import transactionsData from "@/mocks/transactions-mobile.json";
 import RightArrowIcon from "@/public/images/general/RightArrow.svg";
 
-export default function Transactions() {
-  const transactions = transactionsData.data;
+interface ITransactionsProps {
+  isMobile?: boolean | null;
+  transactionDetailData?: any;
+  setTransactionDetailData?: any;
+  setIsTransactionDetailModalOpened?: any;
+  isTransactionDetailModalOpened?: boolean;
+}
 
+export default function Transactions({
+  isMobile,
+  setTransactionDetailData,
+  setIsTransactionDetailModalOpened,
+}: ITransactionsProps) {
+  const transactions = transactionsData.data;
   let exchangeRate = 1.2;
+
+  const onClickTransactionDetailHandler = (transactionDetail: any) => {
+    setTransactionDetailData(transactionDetail);
+    setIsTransactionDetailModalOpened(true);
+  };
 
   return (
     <Flex vertical className="w-full gap-y-2 lg:gap-y-3">
       {transactions.map((transaction, index) => (
         <Flex
           key={index}
+          onClick={() => {
+            onClickTransactionDetailHandler(transaction);
+            console.log(transaction);
+          }}
           className="w-full p-2 lg:px-4 lg:py-3 justify-between gap-x-2 lg:gap-x-4 h-[54px] items-center"
         >
           <Flex className="w-full gap-x-2 justify-between items-center">
             <Flex className="gap-x-2 items-center">
               <Flex className="justify-center items-center w-8 lg:w-14 h-8 lg:h-14 rounded-full bg-lighter">
                 {transaction.amount < 0 ? (
-                  <SendIconSVG color="#36309E" width={32} height={32} />
+                  <SendIconSVG color="#36309E" width={isMobile ? 20 : 32} height={isMobile ? 20 : 32} />
                 ) : (
-                  <ReceiveIconSVG color="#36309E" width={32} height={32} />
+                  <ReceiveIconSVG color="#36309E" width={isMobile ? 20 : 32} height={isMobile ? 20 : 32} />
                 )}
               </Flex>
               <Flex className="flex-col gap-y-2 lg:gap-y-1">
