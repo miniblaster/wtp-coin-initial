@@ -49,6 +49,9 @@
     /* You can change this to your preferred color */
   }
 
+  .ant-modal-content {
+    padding: 0 !important;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

@@ -10,8 +10,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       // scrollbar: {
       //   DEFAULT: {
@@ -48,6 +47,8 @@ const config: Config = {
       dark: "#36309E",
       primary: "#212B36",
       success: "#17714A",
+      darker: "#292476",
+      warning: "#FFAB00",
     },
   },
   plugins: [require("tailwind-scrollbar")],

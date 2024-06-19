@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 
 import { Flex, Typography, Button, Input, ConfigProvider } from "antd";
 
+import ScanQR from "@/components/general/ScanQR";
 import SendIconSVG from "@/components/svg/SendIconSVG";
 import WETPHeader from "@/components/general/WETPHeader";
 import WETPFooter from "@/components/general/WETPFooter";
 import SpinLoading from "@/components/general/SpinLoading";
+import SendPayment from "@/components/general/SendPayment";
 import ReceiveIconSVG from "@/components/svg/ReceiveIconSVG";
 import ContentCopySVG from "@/components/svg/ContentCopySVG";
 import CheckIconSVG from "@/components/svg/home/CheckIconSVG";
@@ -24,12 +26,12 @@ import CompareArrow from "@/public/images/general/CompareArrow.svg";
 import MetaMaskIcon from "@/public/images/general/home/MetaMaskIcon.svg";
 import HomeBannerIcon from "@/public/images/general/home/HomeBanner.svg";
 import InviteIllustration from "@/public/images/general/InviteIllustration.svg";
-import ScanQR from "@/components/general/ScanQR";
 
 export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isScanQROpen, setIsScanQROpen] = useState<boolean>(false);
+  const [isSendPaymentOpen, setIsSendPaymentOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1);
@@ -46,6 +48,12 @@ export default function Page() {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 1024);
   };
+
+  const onClickSendHandler = () => {
+    setIsSendPaymentOpen(true);
+  };
+
+  const onClickQRHandler = () => [setIsScanQROpen(true)];
 
   return (
     <>
@@ -91,7 +99,10 @@ export default function Page() {
                     </Flex>
                     <Flex className="w-full flex lg:gap-x-4 justify-between">
                       <Flex className="gap-x-4">
-                        <Button className="h-9 lg:h-12 px-4 gap-x-2 flex items-center justify-center bg-main">
+                        <Button
+                          onClick={onClickSendHandler}
+                          className="h-9 lg:h-12 px-4 gap-x-2 flex items-center justify-center bg-main"
+                        >
                           <SendIconSVG width={24} height={24} />
                           <Typography className="text-[14px]/[22px] lg:text-[16px]/[20px] text-[white] font-medium">
                             Send
@@ -111,9 +122,7 @@ export default function Page() {
                         </Button>
                       </Flex>
                       <Button
-                        onClick={() => {
-                          setIsScanQROpen(!isScanQROpen);
-                        }}
+                        onClick={onClickQRHandler}
                         className="h-9 w-9 lg:h-12 lg:w-12 px-2 flex items-center justify-center bg-main"
                       >
                         <Image src={MiniQRIcon} alt="MiniQRIcon" className="w-5 lg:w-7 h-auto" />
@@ -270,6 +279,7 @@ export default function Page() {
         </Flex>
       )}
       <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} />
+      <SendPayment isSendPaymentOpen={isSendPaymentOpen} setIsSendPaymentOpen={setIsSendPaymentOpen} />
     </>
   );
 }
