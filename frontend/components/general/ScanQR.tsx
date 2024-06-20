@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 
 import classNames from "classnames";
 import { Button, Flex, Typography, Modal } from "antd";
