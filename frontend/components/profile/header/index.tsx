@@ -9,19 +9,27 @@ import Logomark from "@/public/images/auth/Logomark.svg";
 import Avatar_senesa from "@/public/images/avatar/senesa.svg";
 import LogoutIcon from "@/public/images/general/LogoutIcon.svg";
 import MyWalletIcon from "@/public/images/general/MyWalletIcon.svg";
+import EditIcon from "@/public/images/profile/EditIcon.svg";
 
-interface IWETPHeader {
+interface IProfileHeader {
   activeTab?: string;
   setActiveTab: (tab: string) => void;
 }
 
-export default function WETPHeader({ activeTab, setActiveTab }: IWETPHeader) {
+export default function ProfileHeader({ activeTab, setActiveTab }: IProfileHeader) {
   return (
     <Flex
       align="center"
       className="w-full h-11 lg:h-[72px] flex justify-center gap-x-14 items-center lg:px-8 fixed top-0 bg-[white] z-10"
     >
-      <Flex className="gap-x-[6.4px] lg:gap-x-[11.43px]">
+      <Flex className="lg:hidden w-full px-4 items-center justify-between">
+        <Typography className="text-[20px]/[30px] font-bold text-primary">Profile</Typography>
+        <Flex className="gap-x-2 px-[7px] items-center">
+          <Image src={EditIcon} alt="EditIcon" className="w-[18px] h-auto" />
+          <Typography className="text-[12px]/[14px] font-bold text-dark">Edit</Typography>
+        </Flex>
+      </Flex>
+      <Flex className="hidden lg:flex gap-x-[6.4px] lg:gap-x-[11.43px]">
         <Image src={Logomark} alt="Logomark" className="w-[25.6px] lg:w-10 h-auto" />
         <Typography className="text-[14.4px]/[27.43px] lg:text-[24px]/[36px] font-bold text-main">
           WeThePeople
