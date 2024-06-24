@@ -9,8 +9,11 @@ const TransactionSchema: Schema = new Schema(
     participantId: { type: Number, ref: "Account", required: true },
     currency: { type: Boolean },
     realAmount: { type: Number },
-    wethAmount: { type: Number },
-    date: { type: Date },
+    wetpAmount: { type: Number },
+    gasFee: { type: Number },
+    wetpFee: { type: Number },
+    otherCost: { type: Number },
+    dateTime: { type: Date },
   },
   { timestamps: true }
 );

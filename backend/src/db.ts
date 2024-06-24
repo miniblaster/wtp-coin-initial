@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import config from "./config/config";
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/WTP");
+mongoose.connect(config.connectionString || "");
 
 const db = mongoose.connection;
 

@@ -5,6 +5,9 @@ export type TransactionType = {
   participantId: number;
   currency: boolean;
   realAmount: number;
-  wethAmount: number;
-  date: Date;
+  wetpAmount: number;
+  gasFee: Number;
+  wetpFee: Number;
+  otherCost: Number;
+  dateTime: Date;
 };

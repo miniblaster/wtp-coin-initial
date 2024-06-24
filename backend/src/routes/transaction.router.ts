@@ -4,6 +4,6 @@ import { checkAuth } from "src/middlewares/checkAuth.middleware";
 
 const router: Router = express.Router();
 
-router.post("/send", /*checkAuth,*/ transactionController.sendPayment);
+router.post("/send", checkAuth, transactionController.sendPayment);
 
 export default router;
