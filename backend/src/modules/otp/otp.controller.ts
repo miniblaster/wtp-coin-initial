@@ -51,8 +51,8 @@ export const resetPassword = async (req: Request, res: Response) => {
       return res.status(httpStatus.BAD_REQUEST).json({ error: "Email is required." });
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    const _emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!_emailRegex.test(email)) {
       return res.status(httpStatus.BAD_REQUEST).json({ error: "Invalid email format." });
     }
 

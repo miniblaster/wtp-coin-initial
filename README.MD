@@ -66,22 +66,7 @@ or
 > cd ../frontend/ && yarn
 ```
 
-**Step 3.2**: Copy the `.env.example` file to `.env.local` file.
-
-```bash
-> cp .env.example .env.local
-```
-
-**Step 3.3**: Set environment variables for running the project.
-
-If you are running the backend locally, set `NEXT_PUBLIC_API_URL` to `http://localhost:8003/api`
-
-/frontend/.env.local
-```bash
-> NEXT_PUBLIC_DEV_API_URL=http://localhost:8003/api
-```
-
-**Step 3.4**: Run the frontend code
+**Step 3.2**: Run the frontend code
 
 ```bash
 > npm run dev

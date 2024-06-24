@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
-import httpStatus from "http-status";
 import bcrypt from "bcrypt";
+import httpStatus from "http-status";
+import jwt from "jsonwebtoken";
+import moment from "moment";
+import config from "src/config/config";
 import { getUserByEmail, createUser, getUserByUsername, loginWithEmailAndPassword } from "./auth.service";
 import { deleteOTPFromDatabase, verifyOTPWithDatabase } from "../otp/otp.service";
 
@@ -22,15 +25,15 @@ export const register = async (req: Request, res: Response) => {
 
     await deleteOTPFromDatabase(email, otp, "REGISTER");
 
-    const saltRounds = 10; // Number of salt rounds for hashing
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log("hashed: ", hashedPassword);
+    const _saltRounds = 10; // Number of salt rounds for hashing
+    const _hashedPassword = await bcrypt.hash(password, _saltRounds);
+    console.log("hashed: ", _hashedPassword);
 
     const _user = await createUser({
       name,
       username,
       email,
-      password: hashedPassword,
+      password: _hashedPassword,
       country,
       currency,
       title,
@@ -39,7 +42,7 @@ export const register = async (req: Request, res: Response) => {
     });
     if (_user) {
       console.log("Created user: ", _user);
-      return res.status(httpStatus.CREATED).json({ newUser: _user });
+      return res.status(httpStatus.CREATED).json({ newUser: _user, token: generateAuthTokens(_user) });
     } else {
       console.log("No created user");
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: "Error occurred while creating the user" });
@@ -92,16 +95,32 @@ export const validateRegisterStepTwo = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
+
     const _user = await getUserByEmail(email);
     if (!_user) {
       return res.status(httpStatus.NOT_FOUND).json({ error: "Email does not exists" });
     }
-    const passwordMatch = await bcrypt.compare(password, _user.password.trim());
-    if (!passwordMatch) {
+
+    const _passwordMatch = await bcrypt.compare(password, _user.password.trim());
+    if (!_passwordMatch) {
       return res.status(httpStatus.UNAUTHORIZED).json({ error: "Password does not match" });
     }
-    return res.status(httpStatus.OK).json({ user: _user });
+
+    return res.status(httpStatus.OK).json({ user: _user, token: generateAuthTokens(_user) });
   } catch (error) {
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ message: "Internal server error while logging in" });
   }
+};
+
+export const generateAuthTokens = (user: any) => {
+  const accessTokenExpires = moment().add(config.jwt.accessExpirationMinutes, "minutes");
+  const payload = { user, iat: moment().unix(), exp: accessTokenExpires.unix() };
+  const accessToken = jwt.sign(payload, config.jwt.secret);
+
+  return {
+    access: {
+      token: accessToken,
+      expires: accessTokenExpires.toDate(),
+    },
+  };
 };
