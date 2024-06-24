@@ -17,6 +17,7 @@ import InviteIllustration from "@/public/images/general/InviteIllustration.svg";
 
 export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [activeTab, setActiveTab] = useState<string>("history");
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [transactionDetailData, setTransactionDetailData] = useState<any>(null);
   const [isTransactionDetailModalOpened, setIsTransactionDetailModalOpened] = useState<boolean>(false);
@@ -44,7 +45,7 @@ export default function Page() {
       ) : (
         <>
           <Flex vertical className="w-full">
-            <WETPHeader />
+            <WETPHeader activeTab={activeTab} setActiveTab={setActiveTab} />
             <Flex // content
               className="w-full flex flex-col lg:flex-row lg:gap-x-10 lg:px-[140px] lg:py-8 mt-11 lg:mt-[72px] mb-[60px] lg:mb-0"
             >
@@ -145,7 +146,7 @@ export default function Page() {
                 </Button>
               </Flex>
             </Flex>
-            <WETPFooter />
+            <WETPFooter activeTab={activeTab} setActiveTab={setActiveTab} />
           </Flex>
           <TransactionDetailModal
             isTransactionDetailModalOpened={isTransactionDetailModalOpened}

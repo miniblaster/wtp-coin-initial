@@ -9,9 +9,12 @@ import MoreIconSVG from "../svg/home/MoreIconSVG";
 import HistoryIconSVG from "../svg/home/HistoryIconSVG";
 import ProfileIconSVG from "../svg/home/ProfileIconSVG";
 
-export default function WETPFooter() {
-  const [activeTab, setActiveTab] = useState<string>("home");
+interface IWETPFooter {
+  activeTab?: string;
+  setActiveTab: (tab: string) => void;
+}
 
+export default function WETPFooter({ activeTab, setActiveTab }: IWETPFooter) {
   return (
     <Flex align="center" className="w-full fixed bottom-0 bg-[white] z-10 h-[60px] lg:hidden">
       <Flex

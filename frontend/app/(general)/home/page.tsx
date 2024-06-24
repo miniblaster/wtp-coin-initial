@@ -29,6 +29,7 @@ import InviteIllustration from "@/public/images/general/InviteIllustration.svg";
 
 export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
+  const [activeTab, setActiveTab] = useState<string>("home");
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const [isScanQROpen, setIsScanQROpen] = useState<boolean>(false);
   const [isPaymentSent, setIsPaymentSent] = useState<boolean>(false);
@@ -63,7 +64,7 @@ export default function Page() {
         <SpinLoading />
       ) : (
         <Flex vertical className="w-screen lg:w-full">
-          <WETPHeader />
+          <WETPHeader activeTab={activeTab} setActiveTab={setActiveTab} />
           <Flex // content
             className="w-full flex flex-col lg:pt-8 lg:px-[140px] lg:pb-[14px] lg:gap-y-10 mt-11 lg:mt-[72px] mb-[60px] lg:mb-0"
           >
@@ -277,7 +278,7 @@ export default function Page() {
               </Flex>
             </Flex>
           </Flex>
-          <WETPFooter />
+          <WETPFooter activeTab={activeTab} setActiveTab={setActiveTab} />
         </Flex>
       )}
       <ScanQR isScanQROpen={isScanQROpen} setIsScanQROpen={setIsScanQROpen} />
