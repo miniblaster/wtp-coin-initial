@@ -9,7 +9,7 @@ interface IProfilePart {
 
 export default function ProfilePart({ selectedPart, setSelectedPart }: IProfilePart) {
   return (
-    <Flex className="w-full justify-between items-center">
+    <Flex className="w-full justify-between items-center py-[7px] lg:py-4">
       <Flex className="items-center px-4 lg:px-0 lg:py-4 gap-x-3 lg:gap-x-4">
         <Button
           onClick={() => setSelectedPart("info")}

@@ -4,15 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import {
-  Flex,
-  Typography,
-  Button,
-  Switch,
-  Select,
-  Input,
-  ConfigProvider,
-} from "antd";
+import { Flex, Typography, Button, Switch, Select, Input, ConfigProvider } from "antd";
 
 import SpinLoading from "@/components/general/SpinLoading";
 import AuthHeader from "@/components/auth/header/Header-auth";
@@ -87,12 +79,9 @@ export default function Page() {
             <Flex className="w-full flex flex-col">
               <Flex className="w-full flex flex-col lg:flex-row lg:px-16 lg:py-8 lg:gap-x-8 justify-between mb-4">
                 <Flex vertical gap={16} className="hidden lg:flex w-[406px]">
-                  <Typography className="text-[32px]/[48px] font-bold text-main">
-                    Hello mrseneca!
-                  </Typography>
+                  <Typography className="text-[32px]/[48px] font-bold text-main">Hello mrseneca!</Typography>
                   <Typography className="text-[14px]/[22px]">
-                    Tell us a bit about yourself – it&apos;ll help us tailor
-                    your experience.
+                    Tell us a bit about yourself – it&apos;ll help us tailor your experience.
                   </Typography>
                 </Flex>
                 <Flex
@@ -108,12 +97,7 @@ export default function Page() {
                     </Typography>
                     <Flex className="flex flex-col items-center w-full px-4 lg:px-0 gap-y-2 lg:gap-y-5 bg-[white] rounded-[16px]">
                       <Flex className="flex flex-col items-center py-4 gap-y-2 lg:gap-y-6 border lg:border-none rounded-[16px] border-focus/[24%] shadow-focus/[10%] shadow-2xl">
-                        <Image
-                          priority
-                          src={UploadPhoto}
-                          alt="Upload"
-                          className="w-[132px] h-auto"
-                        />
+                        <Image priority src={UploadPhoto} alt="Upload" className="w-[132px] h-auto" />
                         <Flex className="w-full px-5 lg:px-6">
                           <Typography className="text-[12px]/[16px] font-medium text-disabled text-center w-full">
                             Allowed *.jpeg, *.jpg and *.png Max size of 5 MB
@@ -157,10 +141,7 @@ export default function Page() {
                               filterOption={countryFilterOption}
                             >
                               {countryList.map((countryItem) => (
-                                <Select.Option
-                                  key={countryItem.iso}
-                                  value={countryItem.countryName}
-                                >
+                                <Select.Option key={countryItem.iso} value={countryItem.countryName}>
                                   <Flex align="center" className="pl-3">
                                     <Flag
                                       code={countryItem.iso}
@@ -168,9 +149,7 @@ export default function Page() {
                                       fallback={<span>Unknown</span>}
                                       className="mr-2"
                                     />
-                                    <Typography>
-                                      {countryItem.countryName}
-                                    </Typography>
+                                    <Typography>{countryItem.countryName}</Typography>
                                   </Flex>
                                 </Select.Option>
                               ))}
@@ -191,9 +170,7 @@ export default function Page() {
                       <Flex vertical className="hidden lg:flex w-full gap-y-2">
                         <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold">
                           Short Title&nbsp;
-                          <span className="text-[12px]/[12px] text-secondary">
-                            (Optional)
-                          </span>
+                          <span className="text-[12px]/[12px] text-secondary">(Optional)</span>
                         </Typography>
                         <Input.TextArea
                           className="h-16 text-[14px]/[22px]"
@@ -203,9 +180,7 @@ export default function Page() {
                       <Flex vertical className="hidden lg:flex w-full gap-y-2">
                         <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-semibold">
                           About Yourself&nbsp;
-                          <span className="text-[12px]/[12px] text-secondary">
-                            (Optional)
-                          </span>
+                          <span className="text-[12px]/[12px] text-secondary">(Optional)</span>
                         </Typography>
                         <Input.TextArea
                           className="h-[98px] text-[14px]/[22px]"
@@ -229,10 +204,7 @@ export default function Page() {
                           Cancel
                         </Button>
                       </Flex>
-                      <Flex
-                        justify="center"
-                        className="w-full gap-x-1 lg:hidden"
-                      >
+                      <Flex justify="center" className="w-full gap-x-1 lg:hidden">
                         <Typography className="text-[12px]/[16px] lg:text-[14px]/[22px] font-medium">
                           Already have an account?
                         </Typography>
@@ -259,14 +231,8 @@ export default function Page() {
                     onClick={onClickNextHandler}
                     className="bg-main flex justify-center items-center w-[116px] h-12"
                   >
-                    <Typography className="text-[white] text-[15px]/[26px] font-bold">
-                      Next
-                    </Typography>
-                    <Image
-                      src={EndIcon}
-                      alt="EndIcon"
-                      className="w-[24px] h-auto"
-                    />
+                    <Typography className="text-[white] text-[15px]/[26px] font-bold">Next</Typography>
+                    <Image src={EndIcon} alt="EndIcon" className="w-[24px] h-auto" />
                   </Button>
                 </Flex>
               </Flex>
