@@ -1,4 +1,4 @@
-# WETP (We The People)
+# WETP (We The People) COIN PROJECT
 
 **Tomorrow's currency, today!**
 
